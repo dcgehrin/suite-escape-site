@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suite Escape Rentals | Luxury Beach Stays</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #2C3E50;
+    --slate: #5D6D7E;
+    --sand: #F5F0E8;
+    --cream: #FDFBF7;
+    --soft-blue: #B8C9D9;
+    --warm-white: #FAF9F6;
+    --gold-accent: #C9A96E;
+    --text-dark: #2C3345;
+    --text-light: #7A8594;
+    --border: #E8E2D8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--text-dark);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── ANNOUNCEMENT BAR ─── */
+  .announcement-bar {
+    background: var(--navy);
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .announcement-bar a {
+    color: var(--soft-blue);
+    text-decoration: none;
+    border-bottom: 1px solid var(--soft-blue);
+    margin-left: 8px;
+  }
+
+  /* ─── NAVIGATION ─── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: var(--navy);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .nav-logo span { font-weight: 600; }
+  .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+  .nav-links a {
+    text-decoration: none; color: var(--slate); font-size: 12px;
+    letter-spacing: 1.5px; text-transform: uppercase; font-weight: 400;
+    transition: color 0.3s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px; background: var(--navy); transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    background: var(--navy) !important; color: white !important;
+    padding: 12px 28px !important; font-size: 11px !important;
+    letter-spacing: 2px !important; border: none; cursor: pointer;
+    transition: background 0.3s !important;
+  }
+  .nav-cta:hover { background: var(--slate) !important; }
+  .nav-cta::after { display: none !important; }
+  .mobile-menu { display: none; background: none; border: none; cursor: pointer; }
+  .mobile-menu svg { width: 28px; height: 28px; color: var(--navy); }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    height: 92vh;
+    min-height: 600px;
+    overflow: hidden;
+  }
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    /* REPLACE: Use your Oak Island aerial backyard photo here */
+    background: url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1920&q=80') center/cover;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(44, 51, 69, 0.15) 0%,
+      rgba(44, 51, 69, 0.05) 40%,
+      rgba(44, 51, 69, 0.4) 100%
+    );
+  }
+  .hero-content {
+    position: absolute;
+    bottom: 12%;
+    left: 60px;
+    color: white;
+    max-width: 650px;
+  }
+  .hero-eyebrow {
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    margin-bottom: 20px; opacity: 0.9; font-weight: 400;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 68px; font-weight: 300; line-height: 1.1;
+    margin-bottom: 24px; text-shadow: 0 2px 40px rgba(0,0,0,0.15);
+  }
+  .hero-subtitle {
+    font-size: 16px; font-weight: 300; line-height: 1.7;
+    opacity: 0.9; margin-bottom: 36px; max-width: 480px;
+  }
+  .hero-btn {
+    display: inline-block; padding: 16px 44px; background: white;
+    color: var(--navy); text-decoration: none; font-size: 12px;
+    letter-spacing: 2.5px; text-transform: uppercase; font-weight: 500;
+    transition: all 0.3s;
+  }
+  .hero-btn:hover { background: var(--navy); color: white; }
+  .hero-scroll {
+    position: absolute; bottom: 30px; left: 50%;
+    transform: translateX(-50%); color: white; opacity: 0.7;
+    animation: float 2s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ─── TRUST BAR ─── */
+  .trust-bar {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    padding: 40px 20px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--text-dark);
+    font-weight: 400;
+  }
+  .trust-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--sand);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .trust-item strong { display: block; font-weight: 500; }
+  .trust-item small { font-size: 11px; color: var(--text-light); }
+
+  /* ─── BOOKING BAR ─── */
+  .booking-bar {
+    background: white;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    padding: 32px 40px;
+    display: flex;
+    align-items: end;
+    gap: 24px;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+    border: 1px solid var(--border);
+    transform: translateY(-50%);
+  }
+  .booking-field { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+  .booking-field label {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-light); font-weight: 500;
+  }
+  .booking-field input, .booking-field select {
+    border: 1px solid var(--border); padding: 12px 16px;
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    color: var(--text-dark); background: var(--warm-white);
+    outline: none; transition: border-color 0.3s;
+  }
+  .booking-field input:focus, .booking-field select:focus { border-color: var(--navy); }
+  .booking-search {
+    background: var(--navy); color: white; border: none;
+    padding: 14px 36px; font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; cursor: pointer;
+    font-family: 'Inter', sans-serif; font-weight: 500;
+    white-space: nowrap; transition: background 0.3s;
+  }
+  .booking-search:hover { background: var(--slate); }
+
+  /* ─── INTRO SECTION ─── */
+  .intro {
+    max-width: 800px; margin: 0 auto;
+    text-align: center; padding: 60px 40px 120px;
+  }
+  .intro-eyebrow {
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold-accent); margin-bottom: 24px; font-weight: 500;
+  }
+  .intro h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 46px; font-weight: 300; color: var(--navy);
+    margin-bottom: 28px; line-height: 1.2;
+  }
+  .intro p {
+    font-size: 16px; line-height: 1.8; color: var(--text-light);
+    font-weight: 300; max-width: 580px; margin: 0 auto;
+  }
+  .intro-divider {
+    width: 60px; height: 1px; background: var(--gold-accent);
+    margin: 40px auto 0;
+  }
+
+  /* ─── PROPERTY SHOWCASE (Full-Width) ─── */
+  .property-showcase {
+    padding: 0 0 100px;
+  }
+  .property-showcase .section-header {
+    display: flex; justify-content: space-between; align-items: end;
+    margin-bottom: 60px; padding: 0 60px;
+  }
+  .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 300; color: var(--navy);
+  }
+  .section-header a {
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--navy); text-decoration: none;
+    border-bottom: 1px solid var(--navy); padding-bottom: 2px;
+    transition: opacity 0.3s;
+  }
+  .section-header a:hover { opacity: 0.6; }
+
+  /* Individual Property Block */
+  .property-block {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 0;
+    margin-bottom: 4px;
+    background: white;
+    min-height: 560px;
+  }
+  .property-block.reverse { direction: rtl; }
+  .property-block.reverse > * { direction: ltr; }
+
+  .property-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 4px;
+    min-height: 560px;
+  }
+  .property-gallery .pg-main {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: filter 0.4s;
+  }
+  .property-gallery .pg-main:hover { filter: brightness(1.05); }
+  .property-gallery .pg-thumb {
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: filter 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+  .property-gallery .pg-thumb:hover { filter: brightness(1.05); }
+  .pg-count {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 6px 14px;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  .property-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 70px;
+    background: white;
+  }
+  .property-detail .pd-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--sand);
+    color: var(--gold-accent);
+    padding: 6px 16px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+  .property-detail h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 300;
+    color: var(--navy);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .property-detail .pd-location {
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .property-detail .pd-description {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-light);
+    font-weight: 300;
+    margin-bottom: 28px;
+  }
+  .property-detail .pd-stats {
+    display: flex;
+    gap: 28px;
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .pd-stat {
+    text-align: center;
+    flex: 1;
+  }
+  .pd-stat strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--navy);
+  }
+  .pd-stat small {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+  .property-detail .pd-amenities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .pd-amenity {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    font-size: 12px;
+    color: var(--text-dark);
+    letter-spacing: 0.5px;
+  }
+  .property-detail .pd-cta {
+    display: inline-block;
+    padding: 16px 40px;
+    background: var(--navy);
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: background 0.3s;
+    width: fit-content;
+  }
+  .property-detail .pd-cta:hover { background: var(--slate); }
+
+  /* ─── EXPERIENCE SECTION ─── */
+  .experience {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+  }
+  .experience-image {
+    /* REPLACE: Use your pickleball court or interior neon sign photo */
+    background: url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80') center/cover;
+  }
+  .experience-content {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px; background: var(--sand);
+  }
+  .experience-content .intro-eyebrow { text-align: left; }
+  .experience-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 300; color: var(--navy);
+    margin-bottom: 28px; line-height: 1.2;
+  }
+  .experience-content p {
+    font-size: 15px; line-height: 1.8; color: var(--text-light);
+    font-weight: 300; margin-bottom: 24px;
+  }
+  .experience-features {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin-top: 20px;
+  }
+  .experience-feature {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 13px; color: var(--text-dark);
+  }
+  .experience-feature .dot {
+    width: 6px; height: 6px; background: var(--gold-accent);
+    border-radius: 50%; flex-shrink: 0;
+  }
+
+  /* ─── TESTIMONIAL ─── */
+  .testimonial {
+    text-align: center;
+    padding: 120px 40px;
+    background: var(--warm-white);
+  }
+  .testimonial-stars {
+    color: var(--gold-accent); font-size: 20px;
+    letter-spacing: 4px; margin-bottom: 32px;
+  }
+  .testimonial blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 300; font-style: italic;
+    color: var(--navy); max-width: 700px;
+    margin: 0 auto 28px; line-height: 1.5;
+  }
+  .testimonial cite {
+    font-style: normal; font-size: 12px;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-light);
+  }
+
+  /* ─── GALLERY STRIP ─── */
+  .gallery-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+    padding: 4px;
+    background: white;
+  }
+  .gallery-strip div {
+    height: 280px; background-size: cover;
+    background-position: center; transition: opacity 0.3s; cursor: pointer;
+  }
+  .gallery-strip div:hover { opacity: 0.85; }
+
+  /* ─── HOSPITABLE WIDGET SECTION ─── */
+  .widget-section {
+    padding: 100px 60px; text-align: center; background: white;
+  }
+  .widget-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 300; color: var(--navy);
+    margin-bottom: 16px;
+  }
+  .widget-section p {
+    font-size: 15px; color: var(--text-light);
+    margin-bottom: 50px; font-weight: 300;
+  }
+  .widget-placeholder {
+    max-width: 800px; margin: 0 auto; padding: 60px;
+    border: 2px dashed var(--border); background: var(--warm-white);
+    color: var(--text-light); font-size: 14px; line-height: 1.6;
+  }
+  .widget-placeholder code {
+    display: block; margin-top: 16px; background: var(--navy);
+    color: var(--soft-blue); padding: 16px; font-size: 13px;
+    text-align: left; overflow-x: auto;
+  }
+
+  /* ─── NEWSLETTER ─── */
+  .newsletter {
+    background: var(--navy); color: white;
+    text-align: center; padding: 80px 40px;
+  }
+  .newsletter h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px; font-weight: 300; margin-bottom: 12px;
+  }
+  .newsletter p {
+    font-size: 14px; opacity: 0.7; font-weight: 300; margin-bottom: 32px;
+  }
+  .newsletter-form {
+    display: flex; max-width: 460px; margin: 0 auto; gap: 0;
+  }
+  .newsletter-form input {
+    flex: 1; padding: 14px 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08); color: white;
+    font-family: 'Inter', sans-serif; font-size: 14px; outline: none;
+  }
+  .newsletter-form input::placeholder { color: rgba(255,255,255,0.4); }
+  .newsletter-form button {
+    padding: 14px 32px; background: var(--gold-accent); color: white;
+    border: none; font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; cursor: pointer;
+    font-family: 'Inter', sans-serif; font-weight: 500;
+    transition: background 0.3s;
+  }
+  .newsletter-form button:hover { background: #b8964f; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #1a2332; color: rgba(255,255,255,0.6);
+    padding: 60px; display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+  }
+  .footer-brand .nav-logo { color: white; font-size: 22px; display: block; margin-bottom: 16px; }
+  .footer-brand p { font-size: 14px; line-height: 1.7; font-weight: 300; max-width: 280px; }
+  footer h4 {
+    color: white; font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 20px; font-weight: 500;
+  }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 10px; }
+  footer ul a {
+    color: rgba(255,255,255,0.6); text-decoration: none;
+    font-size: 14px; font-weight: 300; transition: color 0.3s;
+  }
+  footer ul a:hover { color: white; }
+  .footer-bottom {
+    grid-column: 1 / -1; padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex; justify-content: space-between;
+    font-size: 12px; font-weight: 300;
+  }
+  .footer-social { display: flex; gap: 20px; }
+  .footer-social a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s; }
+  .footer-social a:hover { color: white; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .hero-title { font-size: 52px; }
+    .property-block { grid-template-columns: 1fr; }
+    .property-block.reverse { direction: ltr; }
+    .property-gallery { min-height: 400px; }
+    .trust-bar { gap: 30px; flex-wrap: wrap; }
+    footer { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .mobile-menu { display: block; }
+    .hero-content { left: 24px; right: 24px; bottom: 15%; }
+    .hero-title { font-size: 40px; }
+    .booking-bar { flex-direction: column; margin: 0 20px; transform: translateY(-30px); padding: 24px; }
+    .booking-search { width: 100%; padding: 16px; }
+    .property-showcase .section-header { padding: 0 24px; }
+    .property-detail { padding: 40px 24px; }
+    .property-detail h3 { font-size: 30px; }
+    .pd-stats { gap: 16px; }
+    .experience { grid-template-columns: 1fr; }
+    .experience-image { height: 350px; }
+    .experience-content { padding: 50px 24px; }
+    .gallery-strip { grid-template-columns: repeat(2, 1fr); }
+    .intro h2, .section-header h2 { font-size: 34px; }
+    footer { grid-template-columns: 1fr; padding: 40px 24px; }
+    .trust-bar { gap: 20px; padding: 30px 20px; }
+    .trust-item { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<div class="announcement-bar">
+  Book direct and save up to $1,000 off — no booking fees, no middleman
+  <a href="#booking">Reserve Now</a>
+</div>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <a href="#" class="nav-logo"><span>Suite</span> Escape</a>
+  <ul class="nav-links">
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#booking" class="nav-cta">Book Now</a></li>
+  </ul>
+  <button class="mobile-menu">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+  </button>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <!-- REPLACE URL: Use your Oak Island aerial backyard/pool photo -->
+  <div class="hero-image"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Luxurious Family Retreats</div>
+    <h1 class="hero-title">Your Ultimate<br>Beach Escape</h1>
+    <p class="hero-subtitle">Brand new, modern retreats designed for families seeking the ultimate escape. Book direct and save up to $1,000 — no booking fees, no middleman.</p>
+    <a href="#booking" class="hero-btn">Explore Our Properties</a>
+  </div>
+  <div class="hero-scroll">
+    <svg width="24" height="24" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+</section>
+
+<!-- Booking Bar -->
+<div class="booking-bar" id="booking">
+  <div class="booking-field">
+    <label>Check In</label>
+    <input type="date" />
+  </div>
+  <div class="booking-field">
+    <label>Check Out</label>
+    <input type="date" />
+  </div>
+  <div class="booking-field">
+    <label>Guests</label>
+    <select>
+      <option>1 Guest</option>
+      <option>2 Guests</option>
+      <option>3 Guests</option>
+      <option>4 Guests</option>
+      <option>5 Guests</option>
+      <option>6+ Guests</option>
+    </select>
+  </div>
+  <div class="booking-field">
+    <label>Property</label>
+    <select>
+      <option>All Properties</option>
+      <option>The Sandy Paddle — Oak Island</option>
+      <option>The Murrells Inlet Retreat</option>
+    </select>
+  </div>
+  <button class="booking-search">Search</button>
+</div>
+
+<!-- Trust Bar -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-icon">&#127942;</div>
+    <div><strong>Superhost &bull; 10 Years</strong><small>Top-rated host on Airbnb</small></div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">&#11088;</div>
+    <div><strong>5.0 &amp; 4.96 Ratings</strong><small>140+ five-star reviews</small></div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">&#127968;</div>
+    <div><strong>Top 1% &amp; Top 5%</strong><small>Among all homes on Airbnb</small></div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">&#128176;</div>
+    <div><strong>Save Up to $1,000</strong><small>Book direct, skip the fees</small></div>
+  </div>
+</div>
+
+<!-- Introduction -->
+<section class="intro">
+  <div class="intro-eyebrow">Welcome</div>
+  <h2>A New Way to Experience the Coast</h2>
+  <p>Each of our properties has been thoughtfully designed for families seeking the ultimate escape. Ocean views, private resort-style backyards, and every detail curated so you never want to leave.</p>
+  <div class="intro-divider"></div>
+</section>
+
+<!-- Properties Showcase -->
+<section class="property-showcase" id="properties">
+  <div class="section-header">
+    <h2>Our Properties</h2>
+    <a href="#booking">View Availability</a>
+  </div>
+
+  <!-- Property 1: The Sandy Paddle -->
+  <div class="property-block">
+    <div class="property-gallery">
+      <!-- REPLACE: Oak Island aerial backyard with pool, putting green, pickleball -->
+      <div class="pg-main" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80')"></div>
+      <!-- REPLACE: Oak Island aerial full house view -->
+      <div class="pg-thumb" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80')"></div>
+      <!-- REPLACE: Oak Island ocean/beach proximity aerial -->
+      <div class="pg-thumb" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80')">
+        <div class="pg-count">+20 Photos</div>
+      </div>
+    </div>
+    <div class="property-detail">
+      <div class="pd-tag">&#127942; Top 1% of Homes &bull; 5.0 &#9733;</div>
+      <h3>The Sandy Paddle</h3>
+      <div class="pd-location">Oak Island, North Carolina</div>
+      <p class="pd-description">A brand new, modern retreat perfect for families seeking the ultimate escape. Enjoy ocean views from the 3rd row balcony and an expansive backyard with a private pickleball court, basketball goal, and putting green. Steps to the beach.</p>
+      <div class="pd-stats">
+        <div class="pd-stat"><strong>5</strong><small>Bedrooms</small></div>
+        <div class="pd-stat"><strong>4.5</strong><small>Bathrooms</small></div>
+        <div class="pd-stat"><strong>13</strong><small>Guests</small></div>
+        <div class="pd-stat"><strong>64</strong><small>Reviews</small></div>
+      </div>
+      <div class="pd-amenities">
+        <span class="pd-amenity">Heated Pool</span>
+        <span class="pd-amenity">Pickleball Court</span>
+        <span class="pd-amenity">Putting Green</span>
+        <span class="pd-amenity">Basketball</span>
+        <span class="pd-amenity">Ocean Views</span>
+        <span class="pd-amenity">Beach Gear</span>
+      </div>
+      <a href="#booking" class="pd-cta">View Rates &amp; Availability</a>
+    </div>
+  </div>
+
+  <!-- Property 2: The Murrells Inlet Retreat -->
+  <div class="property-block reverse">
+    <div class="property-gallery">
+      <!-- REPLACE: Murrells Inlet aerial backyard -->
+      <div class="pg-main" style="background-image: url('https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=1200&q=80')"></div>
+      <!-- REPLACE: Murrells Inlet pickleball court photo -->
+      <div class="pg-thumb" style="background-image: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80')"></div>
+      <!-- REPLACE: Murrells Inlet dining room with neon sign -->
+      <div class="pg-thumb" style="background-image: url('https://images.unsplash.com/photo-1582610116397-edb318620f90?w=600&q=80')">
+        <div class="pg-count">+25 Photos</div>
+      </div>
+    </div>
+    <div class="property-detail">
+      <div class="pd-tag">&#127942; Top 5% of Homes &bull; 4.96 &#9733;</div>
+      <h3>The Murrells Inlet Retreat</h3>
+      <div class="pd-location">Murrells Inlet, South Carolina</div>
+      <p class="pd-description">This modern and stylish vacation retreat is the perfect choice for families. Step outside to a private backyard with a pool, putting green, and turfed space for relaxing and play. Each bedroom has its own en-suite bathroom. Short walk to the beach.</p>
+      <div class="pd-stats">
+        <div class="pd-stat"><strong>5</strong><small>Bedrooms</small></div>
+        <div class="pd-stat"><strong>5.5</strong><small>Bathrooms</small></div>
+        <div class="pd-stat"><strong>12</strong><small>Guests</small></div>
+        <div class="pd-stat"><strong>76</strong><small>Reviews</small></div>
+      </div>
+      <div class="pd-amenities">
+        <span class="pd-amenity">Heated Pool</span>
+        <span class="pd-amenity">Putting Green</span>
+        <span class="pd-amenity">En-Suite Baths</span>
+        <span class="pd-amenity">Turfed Yard</span>
+        <span class="pd-amenity">Walk to Beach</span>
+        <span class="pd-amenity">Beach Gear</span>
+      </div>
+      <a href="#booking" class="pd-cta">View Rates &amp; Availability</a>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section class="experience" id="experience">
+  <!-- REPLACE: Use your pickleball court or interior photo -->
+  <div class="experience-image"></div>
+  <div class="experience-content">
+    <div class="intro-eyebrow">The Experience</div>
+    <h2>More Than a Place to Stay</h2>
+    <p>We believe every detail matters. From premium linens to the beach cart waiting in storage, we've curated every moment so you can simply relax. Our properties are brand new, modern, and built for families who want more than just a place to stay.</p>
+    <p>When you book direct, you're booking with us — a Superhost with 10 years of experience who cares about your stay from the first message to your last sunset on the balcony.</p>
+    <div class="experience-features">
+      <div class="experience-feature"><div class="dot"></div>Private Heated Pool</div>
+      <div class="experience-feature"><div class="dot"></div>Pickleball Court</div>
+      <div class="experience-feature"><div class="dot"></div>Putting Green</div>
+      <div class="experience-feature"><div class="dot"></div>Basketball Goal</div>
+      <div class="experience-feature"><div class="dot"></div>Self Check-In via Keypad</div>
+      <div class="experience-feature"><div class="dot"></div>Beach Gear Provided</div>
+      <div class="experience-feature"><div class="dot"></div>All Linens & Towels Included</div>
+      <div class="experience-feature"><div class="dot"></div>Steps to the Beach</div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonial -->
+<section class="testimonial" id="reviews">
+  <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+  <blockquote>"The most beautiful rental we've ever stayed in. Every detail was perfect — it felt like a boutique hotel with the warmth of home."</blockquote>
+  <cite>Sarah & James M. &mdash; Nashville, TN</cite>
+</section>
+
+<!-- Gallery Strip -->
+<section class="gallery-strip" id="gallery">
+  <!-- REPLACE ALL: Use your best property photos across both properties -->
+  <!-- Suggested: pool aerial, pickleball, beach view, interior, dining neon sign -->
+  <div style="background-image: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80')"></div>
+  <div style="background-image: url('https://images.unsplash.com/photo-1582610116397-edb318620f90?w=600&q=80')"></div>
+  <div style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80')"></div>
+  <div style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80')"></div>
+  <div style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80')"></div>
+</section>
+
+<!-- Hospitable Widget Section -->
+<section class="widget-section" id="book-direct">
+  <h2>Check Availability & Book</h2>
+  <p>Select your dates and property below to book instantly — direct means better rates.</p>
+  <div class="widget-placeholder">
+    <strong>Hospitable Booking Widget Goes Here</strong><br><br>
+    This is where you'd embed your Hospitable search & booking widget.
+    It handles calendar sync, payments, and availability automatically.
+    <code>&lt;!-- Paste your Hospitable widget embed code here --&gt;<br>&lt;script src="https://direct.hospitable.com/widget/YOUR_ID"&gt;&lt;/script&gt;</code>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter" id="contact">
+  <h3>Stay in the Loop</h3>
+  <p>Get exclusive offers, new property announcements, and coastal living inspiration.</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="Your email address" />
+    <button>Subscribe</button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-brand">
+    <a href="#" class="nav-logo"><span>Suite</span> Escape</a>
+    <p>Luxury beachfront vacation rentals in North Carolina & South Carolina. Book direct for the best experience and rates.</p>
+  </div>
+  <div>
+    <h4>Properties</h4>
+    <ul>
+      <li><a href="#">The Sandy Paddle</a></li>
+      <li><a href="#">The Murrells Inlet Retreat</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Info</h4>
+    <ul>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Local Guide</a></li>
+      <li><a href="#">FAQs</a></li>
+      <li><a href="#">House Rules</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Contact</h4>
+    <ul>
+      <li><a href="mailto:drew@heyfrankie.com">drew@heyfrankie.com</a></li>
+      <li><a href="https://www.instagram.com/suiteescaperentals/" target="_blank">@suiteescaperentals</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Suite Escape Rentals. All rights reserved.</span>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/suiteescaperentals/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky nav shadow
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  /* ═══════════════════════════════════════════
+     ADMIN: Drag & Drop Image Manager
+     Press the key combo Ctrl+Shift+E to toggle
+     ═══════════════════════════════════════════ */
+  (function() {
+    let editMode = false;
+    const STORAGE_KEY = 'suiteEscapeImages';
+
+    // All editable image slots
+    const imageSlots = [
+      { selector: '.hero-image', label: 'Hero Background' },
+      { selector: '.property-block:nth-child(2) .pg-main', label: 'Sandy Paddle — Main Photo' },
+      { selector: '.property-block:nth-child(2) .pg-thumb:nth-child(2)', label: 'Sandy Paddle — Thumb 1' },
+      { selector: '.property-block:nth-child(2) .pg-thumb:nth-child(3)', label: 'Sandy Paddle — Thumb 2' },
+      { selector: '.property-block:nth-child(3) .pg-main', label: 'Murrells Inlet — Main Photo' },
+      { selector: '.property-block:nth-child(3) .pg-thumb:nth-child(2)', label: 'Murrells Inlet — Thumb 1' },
+      { selector: '.property-block:nth-child(3) .pg-thumb:nth-child(3)', label: 'Murrells Inlet — Thumb 2' },
+      { selector: '.experience-image', label: 'Experience Section' },
+      { selector: '.gallery-strip div:nth-child(1)', label: 'Gallery 1' },
+      { selector: '.gallery-strip div:nth-child(2)', label: 'Gallery 2' },
+      { selector: '.gallery-strip div:nth-child(3)', label: 'Gallery 3' },
+      { selector: '.gallery-strip div:nth-child(4)', label: 'Gallery 4' },
+      { selector: '.gallery-strip div:nth-child(5)', label: 'Gallery 5' },
+    ];
+
+    // Load saved images
+    function loadSavedImages() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (!saved) return;
+        const data = JSON.parse(saved);
+        imageSlots.forEach((slot, i) => {
+          if (data[i]) {
+            const el = document.querySelector(slot.selector);
+            if (el) el.style.backgroundImage = `url('${data[i]}')`;
+          }
+        });
+      } catch(e) {}
+    }
+
+    // Save image to storage
+    function saveImage(index, dataUrl) {
+      try {
+        let data = {};
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) data = JSON.parse(saved);
+        data[index] = dataUrl;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      } catch(e) {
+        console.warn('Image too large for localStorage. Using session only.');
+      }
+    }
+
+    // Create edit overlay for a slot
+    function createOverlay(slot, index) {
+      const el = document.querySelector(slot.selector);
+      if (!el) return;
+      el.style.position = 'relative';
+
+      const overlay = document.createElement('div');
+      overlay.className = 'img-edit-overlay';
+      overlay.innerHTML = `
+        <div class="img-edit-label">${slot.label}</div>
+        <div class="img-edit-drop">
+          <svg width="32" height="32" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M12 16V4m0 0L8 8m4-4l4 4M4 14v4a2 2 0 002 2h12a2 2 0 002-2v-4"/>
+          </svg>
+          <span>Drop image here<br>or click to browse</span>
+        </div>
+      `;
+
+      // File input (hidden)
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.style.display = 'none';
+      overlay.appendChild(input);
+
+      // Click to browse
+      overlay.addEventListener('click', (e) => {
+        if (editMode) input.click();
+      });
+
+      // File selected
+      input.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) handleFile(file, el, index);
+      });
+
+      // Drag events
+      overlay.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        overlay.classList.add('drag-active');
+      });
+      overlay.addEventListener('dragleave', () => {
+        overlay.classList.remove('drag-active');
+      });
+      overlay.addEventListener('drop', (e) => {
+        e.preventDefault();
+        overlay.classList.remove('drag-active');
+        const file = e.dataTransfer.files[0];
+        if (file && file.type.startsWith('image/')) {
+          handleFile(file, el, index);
+        }
+      });
+
+      el.appendChild(overlay);
+    }
+
+    // Handle dropped/selected file
+    function handleFile(file, el, index) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        el.style.backgroundImage = `url('${e.target.result}')`;
+        saveImage(index, e.target.result);
+        showToast(`Updated: ${imageSlots[index].label}`);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Toast notification
+    function showToast(msg) {
+      const toast = document.createElement('div');
+      toast.style.cssText = `
+        position: fixed; bottom: 30px; right: 30px; background: #2C3E50;
+        color: white; padding: 14px 24px; font-size: 13px; letter-spacing: 1px;
+        z-index: 10000; border-left: 3px solid #C9A96E;
+        font-family: Inter, sans-serif; animation: fadeInUp 0.3s;
+      `;
+      toast.textContent = msg;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 2500);
+    }
+
+    // Toggle edit mode
+    function toggleEditMode() {
+      editMode = !editMode;
+      document.body.classList.toggle('edit-mode', editMode);
+      if (editMode) {
+        showToast('Edit Mode ON — Drag & drop images onto any highlighted area');
+        // Create overlays
+        imageSlots.forEach((slot, i) => {
+          const el = document.querySelector(slot.selector);
+          if (el && !el.querySelector('.img-edit-overlay')) createOverlay(slot, i);
+        });
+      } else {
+        showToast('Edit Mode OFF');
+      }
+    }
+
+    // Keyboard shortcut: Ctrl+Shift+E
+    document.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key === 'E') {
+        e.preventDefault();
+        toggleEditMode();
+      }
+    });
+
+    // Add edit mode button (floating)
+    const editBtn = document.createElement('button');
+    editBtn.id = 'editModeBtn';
+    editBtn.innerHTML = '&#9998; Edit Images';
+    editBtn.style.cssText = `
+      position: fixed; bottom: 24px; left: 24px; z-index: 9999;
+      background: #2C3E50; color: white; border: none;
+      padding: 12px 24px; font-size: 12px; letter-spacing: 1.5px;
+      text-transform: uppercase; cursor: pointer;
+      font-family: Inter, sans-serif; font-weight: 500;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+    `;
+    editBtn.addEventListener('click', toggleEditMode);
+    editBtn.addEventListener('mouseenter', () => { editBtn.style.background = '#C9A96E'; });
+    editBtn.addEventListener('mouseleave', () => {
+      editBtn.style.background = editMode ? '#C9A96E' : '#2C3E50';
+    });
+    document.body.appendChild(editBtn);
+
+    // Edit mode styles
+    const style = document.createElement('style');
+    style.textContent = `
+      .img-edit-overlay {
+        position: absolute; inset: 0; z-index: 50;
+        display: none; flex-direction: column;
+        align-items: center; justify-content: center;
+        background: rgba(44, 62, 80, 0.7);
+        cursor: pointer; transition: background 0.3s;
+        backdrop-filter: blur(2px);
+      }
+      .img-edit-overlay:hover { background: rgba(44, 62, 80, 0.85); }
+      .img-edit-overlay.drag-active { background: rgba(201, 169, 110, 0.8); }
+      .img-edit-label {
+        position: absolute; top: 12px; left: 12px;
+        background: rgba(0,0,0,0.6); color: white;
+        padding: 4px 12px; font-size: 10px;
+        letter-spacing: 1.5px; text-transform: uppercase;
+      }
+      .img-edit-drop {
+        text-align: center; color: white;
+      }
+      .img-edit-drop span {
+        display: block; margin-top: 12px;
+        font-size: 13px; opacity: 0.9; line-height: 1.5;
+      }
+      body.edit-mode .img-edit-overlay { display: flex; }
+      body.edit-mode #editModeBtn { background: #C9A96E !important; }
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Load any previously saved images on page load
+    loadSavedImages();
+  })();
+</script>
+
+</body>
+</html>
