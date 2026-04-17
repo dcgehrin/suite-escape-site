@@ -191,41 +191,22 @@
   .trust-item strong { display: block; font-weight: 500; }
   .trust-item small { font-size: 11px; color: var(--text-light); }
 
-  /* ─── BOOKING BAR ─── */
-  .booking-bar {
-    background: white;
+  /* ─── HOSPITABLE SEARCH WIDGET ─── */
+  .search-widget-wrapper {
     max-width: 900px;
     margin: 0 auto;
     position: relative;
     z-index: 10;
-    padding: 32px 40px;
-    display: flex;
-    align-items: end;
-    gap: 24px;
+    transform: translateY(-50%);
+    background: white;
     box-shadow: 0 4px 40px rgba(0,0,0,0.08);
     border: 1px solid var(--border);
-    transform: translateY(-50%);
+    padding: 20px 24px;
   }
-  .booking-field { flex: 1; display: flex; flex-direction: column; gap: 8px; }
-  .booking-field label {
-    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--text-light); font-weight: 500;
+  .search-widget-wrapper hospitable-direct-mps {
+    display: block;
+    width: 100%;
   }
-  .booking-field input, .booking-field select {
-    border: 1px solid var(--border); padding: 12px 16px;
-    font-family: 'Inter', sans-serif; font-size: 14px;
-    color: var(--text-dark); background: var(--warm-white);
-    outline: none; transition: border-color 0.3s;
-  }
-  .booking-field input:focus, .booking-field select:focus { border-color: var(--navy); }
-  .booking-search {
-    background: var(--navy); color: white; border: none;
-    padding: 14px 36px; font-size: 11px; letter-spacing: 2px;
-    text-transform: uppercase; cursor: pointer;
-    font-family: 'Inter', sans-serif; font-weight: 500;
-    white-space: nowrap; transition: background 0.3s;
-  }
-  .booking-search:hover { background: var(--slate); }
 
   /* ─── INTRO SECTION ─── */
   .intro {
@@ -540,16 +521,6 @@
     max-width: 900px;
     margin: 0 auto;
   }
-  .widget-property-label {
-    font-family: var(--heading);
-    color: var(--navy);
-    font-size: 1.3rem;
-    text-align: center;
-    margin: 2.5rem 0 0.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--sand);
-  }
-  .widget-property-label:first-of-type { margin-top: 0; }
   .widget-panel {
     display: none;
   }
@@ -632,8 +603,7 @@
     .mobile-menu { display: block; }
     .hero-content { left: 24px; right: 24px; bottom: 15%; }
     .hero-title { font-size: 40px; }
-    .booking-bar { flex-direction: column; margin: 0 20px; transform: translateY(-30px); padding: 24px; }
-    .booking-search { width: 100%; padding: 16px; }
+    .search-widget-wrapper { margin: 0 20px; transform: translateY(-30px); padding: 16px; }
     .property-showcase .section-header { padding: 0 24px; }
     .property-detail { padding: 40px 24px; }
     .property-detail h3 { font-size: 30px; }
@@ -696,36 +666,10 @@
   </div>
 </section>
 
-<!-- Booking Bar -->
-<div class="booking-bar" id="booking">
-  <div class="booking-field">
-    <label>Check In</label>
-    <input type="date" />
-  </div>
-  <div class="booking-field">
-    <label>Check Out</label>
-    <input type="date" />
-  </div>
-  <div class="booking-field">
-    <label>Guests</label>
-    <select>
-      <option>1 Guest</option>
-      <option>2 Guests</option>
-      <option>3 Guests</option>
-      <option>4 Guests</option>
-      <option>5 Guests</option>
-      <option>6+ Guests</option>
-    </select>
-  </div>
-  <div class="booking-field">
-    <label>Property</label>
-    <select id="booking-property">
-      <option value="all">All Properties</option>
-      <option value="oki">The Sandy Paddle — Oak Island</option>
-      <option value="mi">The Murrells Inlet Retreat</option>
-    </select>
-  </div>
-  <button class="booking-search" onclick="handleBookingSearch()">Search Availability</button>
+<!-- Hospitable Search Widget -->
+<div class="search-widget-wrapper" id="booking">
+  <script src="https://hospitable.b-cdn.net/direct-property-search-widget/hospitable-search-widget.prod.js"></script>
+  <hospitable-direct-mps type="internal" force-enable="true" identifier="60158a60" results-url="./search/"></hospitable-direct-mps>
 </div>
 
 <!-- Trust Bar -->
@@ -872,18 +816,15 @@
   <p>Select your dates below to book instantly — direct means better rates.</p>
 
   <div class="widget-tabs">
-    <button class="widget-tab" onclick="switchProperty('all')">All Properties</button>
-    <button class="widget-tab active" onclick="switchProperty('oki')">The Sandy Paddle — Oak Island</button>
-    <button class="widget-tab" onclick="switchProperty('mi')">The Murrells Inlet Retreat</button>
+    <button class="widget-tab active" onclick="switchProperty(0)">The Sandy Paddle — Oak Island</button>
+    <button class="widget-tab" onclick="switchProperty(1)">The Murrells Inlet Retreat</button>
   </div>
 
   <div class="widget-container">
     <div class="widget-panel active" id="widget-oak-island">
-      <h3 class="widget-property-label" style="display:none;">The Sandy Paddle — Oak Island, NC</h3>
       <iframe id="booking-iframe-oki" sandbox="allow-top-navigation allow-scripts allow-same-origin" style="width: 100%; height: 900px; border: none;" frameborder="0" src="https://booking.hospitable.com/widget/a18fdd60-ab70-453f-a0ed-4a7855833f3f/2076188"></iframe>
     </div>
     <div class="widget-panel" id="widget-murrells-inlet">
-      <h3 class="widget-property-label" style="display:none;">The Murrells Inlet Retreat — Murrells Inlet, SC</h3>
       <iframe id="booking-iframe-mi" sandbox="allow-top-navigation allow-scripts allow-same-origin" style="width: 100%; height: 900px; border: none;" frameborder="0" src="https://booking.hospitable.com/widget/a18fdd60-ab70-453f-a0ed-4a7855833f3f/2076186"></iframe>
     </div>
   </div>
@@ -951,45 +892,14 @@
     });
   });
 
-  // Booking bar search handler
-  function handleBookingSearch() {
-    const property = document.getElementById('booking-property').value;
-    switchProperty(property);
-
-    // Smooth scroll to the booking widget section
-    const widgetSection = document.getElementById('book-direct');
-    if (widgetSection) {
-      widgetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-
-  // Property widget tab switching — supports 'all', 'oki', or 'mi'
-  function switchProperty(view) {
-    const tabs = document.querySelectorAll('.widget-tab');
-    const okiPanel = document.getElementById('widget-oak-island');
-    const miPanel = document.getElementById('widget-murrells-inlet');
-    const labels = document.querySelectorAll('.widget-property-label');
-
-    // Reset all tabs
-    tabs.forEach(tab => tab.classList.remove('active'));
-
-    if (view === 'all') {
-      // Show both panels stacked with property labels
-      tabs[0].classList.add('active');
-      okiPanel.classList.add('active');
-      miPanel.classList.add('active');
-      labels.forEach(l => l.style.display = 'block');
-    } else if (view === 'oki') {
-      tabs[1].classList.add('active');
-      okiPanel.classList.add('active');
-      miPanel.classList.remove('active');
-      labels.forEach(l => l.style.display = 'none');
-    } else if (view === 'mi') {
-      tabs[2].classList.add('active');
-      okiPanel.classList.remove('active');
-      miPanel.classList.add('active');
-      labels.forEach(l => l.style.display = 'none');
-    }
+  // Property widget tab switching (for bottom booking section)
+  function switchProperty(index) {
+    document.querySelectorAll('.widget-tab').forEach((tab, i) => {
+      tab.classList.toggle('active', i === index);
+    });
+    document.querySelectorAll('.widget-panel').forEach((panel, i) => {
+      panel.classList.toggle('active', i === index);
+    });
   }
 
   /* ═══════════════════════════════════════════
