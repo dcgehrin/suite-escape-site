@@ -540,6 +540,16 @@
     max-width: 900px;
     margin: 0 auto;
   }
+  .widget-property-label {
+    font-family: var(--heading);
+    color: var(--navy);
+    font-size: 1.3rem;
+    text-align: center;
+    margin: 2.5rem 0 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--sand);
+  }
+  .widget-property-label:first-of-type { margin-top: 0; }
   .widget-panel {
     display: none;
   }
@@ -709,13 +719,13 @@
   </div>
   <div class="booking-field">
     <label>Property</label>
-    <select>
-      <option>All Properties</option>
-      <option>The Sandy Paddle — Oak Island</option>
-      <option>The Murrells Inlet Retreat</option>
+    <select id="booking-property">
+      <option value="all">All Properties</option>
+      <option value="oki">The Sandy Paddle — Oak Island</option>
+      <option value="mi">The Murrells Inlet Retreat</option>
     </select>
   </div>
-  <button class="booking-search">Search</button>
+  <button class="booking-search" onclick="handleBookingSearch()">Search Availability</button>
 </div>
 
 <!-- Trust Bar -->
@@ -862,15 +872,18 @@
   <p>Select your dates below to book instantly — direct means better rates.</p>
 
   <div class="widget-tabs">
-    <button class="widget-tab active" onclick="switchProperty(0)">The Sandy Paddle — Oak Island</button>
-    <button class="widget-tab" onclick="switchProperty(1)">The Murrells Inlet Retreat</button>
+    <button class="widget-tab" onclick="switchProperty('all')">All Properties</button>
+    <button class="widget-tab active" onclick="switchProperty('oki')">The Sandy Paddle — Oak Island</button>
+    <button class="widget-tab" onclick="switchProperty('mi')">The Murrells Inlet Retreat</button>
   </div>
 
   <div class="widget-container">
     <div class="widget-panel active" id="widget-oak-island">
+      <h3 class="widget-property-label" style="display:none;">The Sandy Paddle — Oak Island, NC</h3>
       <iframe id="booking-iframe-oki" sandbox="allow-top-navigation allow-scripts allow-same-origin" style="width: 100%; height: 900px; border: none;" frameborder="0" src="https://booking.hospitable.com/widget/a18fdd60-ab70-453f-a0ed-4a7855833f3f/2076188"></iframe>
     </div>
     <div class="widget-panel" id="widget-murrells-inlet">
+      <h3 class="widget-property-label" style="display:none;">The Murrells Inlet Retreat — Murrells Inlet, SC</h3>
       <iframe id="booking-iframe-mi" sandbox="allow-top-navigation allow-scripts allow-same-origin" style="width: 100%; height: 900px; border: none;" frameborder="0" src="https://booking.hospitable.com/widget/a18fdd60-ab70-453f-a0ed-4a7855833f3f/2076186"></iframe>
     </div>
   </div>
@@ -938,14 +951,45 @@
     });
   });
 
-  // Property widget tab switching
-  function switchProperty(index) {
-    document.querySelectorAll('.widget-tab').forEach((tab, i) => {
-      tab.classList.toggle('active', i === index);
-    });
-    document.querySelectorAll('.widget-panel').forEach((panel, i) => {
-      panel.classList.toggle('active', i === index);
-    });
+  // Booking bar search handler
+  function handleBookingSearch() {
+    const property = document.getElementById('booking-property').value;
+    switchProperty(property);
+
+    // Smooth scroll to the booking widget section
+    const widgetSection = document.getElementById('book-direct');
+    if (widgetSection) {
+      widgetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // Property widget tab switching — supports 'all', 'oki', or 'mi'
+  function switchProperty(view) {
+    const tabs = document.querySelectorAll('.widget-tab');
+    const okiPanel = document.getElementById('widget-oak-island');
+    const miPanel = document.getElementById('widget-murrells-inlet');
+    const labels = document.querySelectorAll('.widget-property-label');
+
+    // Reset all tabs
+    tabs.forEach(tab => tab.classList.remove('active'));
+
+    if (view === 'all') {
+      // Show both panels stacked with property labels
+      tabs[0].classList.add('active');
+      okiPanel.classList.add('active');
+      miPanel.classList.add('active');
+      labels.forEach(l => l.style.display = 'block');
+    } else if (view === 'oki') {
+      tabs[1].classList.add('active');
+      okiPanel.classList.add('active');
+      miPanel.classList.remove('active');
+      labels.forEach(l => l.style.display = 'none');
+    } else if (view === 'mi') {
+      tabs[2].classList.add('active');
+      okiPanel.classList.remove('active');
+      miPanel.classList.add('active');
+      labels.forEach(l => l.style.display = 'none');
+    }
   }
 
   /* ═══════════════════════════════════════════
