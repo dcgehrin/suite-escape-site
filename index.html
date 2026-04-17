@@ -502,15 +502,49 @@
     font-size: 15px; color: var(--text-light);
     margin-bottom: 50px; font-weight: 300;
   }
-  .widget-placeholder {
-    max-width: 800px; margin: 0 auto; padding: 60px;
-    border: 2px dashed var(--border); background: var(--warm-white);
-    color: var(--text-light); font-size: 14px; line-height: 1.6;
+  .widget-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .widget-placeholder code {
-    display: block; margin-top: 16px; background: var(--navy);
-    color: var(--soft-blue); padding: 16px; font-size: 13px;
-    text-align: left; overflow-x: auto;
+  .widget-tab {
+    flex: 1;
+    padding: 16px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    background: var(--warm-white);
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 400;
+  }
+  .widget-tab:first-child { border-right: none; }
+  .widget-tab.active {
+    background: var(--navy);
+    color: white;
+    border-color: var(--navy);
+    font-weight: 500;
+  }
+  .widget-tab:hover:not(.active) {
+    background: var(--sand);
+    color: var(--text-dark);
+  }
+  .widget-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .widget-panel {
+    display: none;
+  }
+  .widget-panel.active {
+    display: block;
   }
 
   /* ─── NEWSLETTER ─── */
@@ -822,15 +856,23 @@
   <div style="background-image: url('OKI%20Wall.jpg')"></div>
 </section>
 
-<!-- Hospitable Widget Section -->
+<!-- Booking Section -->
 <section class="widget-section" id="book-direct">
   <h2>Check Availability & Book</h2>
-  <p>Select your dates and property below to book instantly — direct means better rates.</p>
-  <div class="widget-placeholder">
-    <strong>Hospitable Booking Widget Goes Here</strong><br><br>
-    This is where you'd embed your Hospitable search & booking widget.
-    It handles calendar sync, payments, and availability automatically.
-    <code>&lt;!-- Paste your Hospitable widget embed code here --&gt;<br>&lt;script src="https://direct.hospitable.com/widget/YOUR_ID"&gt;&lt;/script&gt;</code>
+  <p>Select your dates below to book instantly — direct means better rates.</p>
+
+  <div class="widget-tabs">
+    <button class="widget-tab active" onclick="switchProperty(0)">The Sandy Paddle — Oak Island</button>
+    <button class="widget-tab" onclick="switchProperty(1)">The Murrells Inlet Retreat</button>
+  </div>
+
+  <div class="widget-container">
+    <div class="widget-panel active" id="widget-oak-island">
+      <iframe id="booking-iframe-oki" sandbox="allow-top-navigation allow-scripts allow-same-origin" style="width: 100%; height: 900px; border: none;" frameborder="0" src="https://booking.hospitable.com/widget/a18fdd60-ab70-453f-a0ed-4a7855833f3f/2076188"></iframe>
+    </div>
+    <div class="widget-panel" id="widget-murrells-inlet">
+      <iframe id="booking-iframe-mi" sandbox="allow-top-navigation allow-scripts allow-same-origin" style="width: 100%; height: 900px; border: none;" frameborder="0" src="https://booking.hospitable.com/widget/a18fdd60-ab70-453f-a0ed-4a7855833f3f/2076186"></iframe>
+    </div>
   </div>
 </section>
 
@@ -895,6 +937,16 @@
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  // Property widget tab switching
+  function switchProperty(index) {
+    document.querySelectorAll('.widget-tab').forEach((tab, i) => {
+      tab.classList.toggle('active', i === index);
+    });
+    document.querySelectorAll('.widget-panel').forEach((panel, i) => {
+      panel.classList.toggle('active', i === index);
+    });
+  }
 
   /* ═══════════════════════════════════════════
      ADMIN: Drag & Drop Image Manager
