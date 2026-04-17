@@ -104,7 +104,14 @@
   .hero-image {
     position: absolute;
     inset: 0;
-    background: url('Aerial.jpg') center/cover;
+    background: #2C3E50;
+  }
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .hero-overlay {
     position: absolute;
@@ -626,8 +633,11 @@
 
 <!-- Hero -->
 <section class="hero">
-  <!-- REPLACE URL: Use your Oak Island aerial backyard/pool photo -->
-  <div class="hero-image"></div>
+  <div class="hero-image">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="OKI%20Video.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Luxurious Family Retreats</div>
