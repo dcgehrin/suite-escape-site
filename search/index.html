@@ -121,8 +121,20 @@
   }
   .search-widget-area hospitable-direct-mps {
     display: block;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
+  }
+
+  /* Results area — let the widget expand fully */
+  .search-results-wrapper {
+    background: var(--cream);
+    padding: 40px 40px 80px;
+  }
+  .search-results-wrapper hospitable-direct-mps {
+    display: block;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 60vh;
   }
 
   .search-results-area {
@@ -258,10 +270,10 @@
   <p>Search across all our luxury properties to find your perfect getaway</p>
 </div>
 
-<!-- Hospitable Search Widget -->
+<!-- Hospitable Search & Results Widget -->
 <div class="search-widget-area">
   <script src="https://hospitable.b-cdn.net/direct-property-search-widget/hospitable-search-widget.prod.js"></script>
-  <hospitable-direct-mps type="internal" force-enable="true" identifier="60158a60" results-url="/suite-escape-site/search/"></hospitable-direct-mps>
+  <hospitable-direct-mps type="internal" force-enable="true" identifier="60158a60"></hospitable-direct-mps>
 </div>
 
 <!-- Trust Bar -->
