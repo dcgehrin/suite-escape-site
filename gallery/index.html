@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Gallery | Suite Escape Rentals</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #2C3E50;
+    --slate: #5D6D7E;
+    --sand: #F5F0E8;
+    --cream: #FDFBF7;
+    --soft-blue: #B8C9D9;
+    --warm-white: #FAF9F6;
+    --gold-accent: #C9A96E;
+    --text-dark: #2C3345;
+    --text-light: #7A8594;
+    --border: #E8E2D8;
+    --heading: 'Cormorant Garamond', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--text-dark);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── ANNOUNCEMENT BAR ─── */
+  .announcement-bar {
+    background: var(--navy);
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .announcement-bar a {
+    color: var(--soft-blue);
+    text-decoration: none;
+    border-bottom: 1px solid var(--soft-blue);
+    margin-left: 8px;
+  }
+
+  /* ─── NAVIGATION ─── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+  .nav-logo {
+    font-family: var(--heading);
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: var(--navy);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .nav-logo span { font-weight: 600; }
+  .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+  .nav-links a {
+    text-decoration: none; color: var(--slate); font-size: 12px;
+    letter-spacing: 1.5px; text-transform: uppercase; font-weight: 400;
+    transition: color 0.3s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px; background: var(--navy); transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    background: var(--navy) !important; color: white !important;
+    padding: 12px 28px !important; font-size: 11px !important;
+    letter-spacing: 2px !important; border: none; cursor: pointer;
+    transition: background 0.3s !important;
+  }
+  .nav-cta:hover { background: var(--slate) !important; }
+  .nav-cta::after { display: none !important; }
+  .mobile-menu { display: none; background: none; border: none; cursor: pointer; }
+  .mobile-menu svg { width: 28px; height: 28px; color: var(--navy); }
+
+  /* ─── GALLERY HERO ─── */
+  .gallery-hero {
+    background: var(--navy);
+    padding: 70px 60px 60px;
+    text-align: center;
+  }
+  .gallery-hero .eyebrow {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--soft-blue);
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+  .gallery-hero h1 {
+    font-family: var(--heading);
+    font-size: 52px;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 12px;
+  }
+  .gallery-hero p {
+    color: rgba(255,255,255,0.65);
+    font-size: 15px;
+    font-weight: 300;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ─── PROPERTY FILTER TABS ─── */
+  .gallery-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    padding: 0 60px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+  }
+  .gallery-tab {
+    padding: 20px 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 400;
+    position: relative;
+  }
+  .gallery-tab.active {
+    color: var(--navy);
+    font-weight: 500;
+  }
+  .gallery-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+    background: var(--gold-accent);
+  }
+  .gallery-tab:hover:not(.active) {
+    color: var(--text-dark);
+  }
+
+  /* ─── PROPERTY GALLERY SECTION ─── */
+  .property-gallery-section {
+    padding: 60px;
+    display: none;
+  }
+  .property-gallery-section.active {
+    display: block;
+  }
+  .property-gallery-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .property-gallery-header .eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 12px;
+  }
+  .property-gallery-header h2 {
+    font-family: var(--heading);
+    font-size: 38px;
+    font-weight: 300;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .property-gallery-header p {
+    color: var(--text-light);
+    font-size: 14px;
+    font-weight: 300;
+  }
+  .property-gallery-header .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold-accent);
+    margin: 20px auto 0;
+  }
+
+  /* ─── PHOTO GRID ─── */
+  .photo-grid {
+    display: grid;
+    gap: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  /* Masonry-style layout */
+  .photo-grid.layout-a {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 320px 280px 320px;
+  }
+  .photo-grid.layout-a .photo-item:nth-child(1) {
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+  .photo-grid.layout-a .photo-item:nth-child(4) {
+    grid-column: 2 / 4;
+  }
+
+  .photo-grid.layout-b {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 320px 280px 320px;
+  }
+  .photo-grid.layout-b .photo-item:nth-child(1) {
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+  .photo-grid.layout-b .photo-item:nth-child(4) {
+    grid-column: 2 / 4;
+  }
+
+  .photo-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease, filter 0.4s ease;
+  }
+  .photo-item:hover img {
+    transform: scale(1.05);
+  }
+  .photo-item .photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    color: white;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+  }
+  .photo-item:hover .photo-caption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── LIGHTBOX ─── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.92);
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+  .lightbox.active {
+    display: flex;
+  }
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 8px 60px rgba(0,0,0,0.4);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    font-weight: 300;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox-close:hover { opacity: 1; }
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 50%;
+    transition: all 0.3s;
+  }
+  .lightbox-nav:hover {
+    background: rgba(255,255,255,0.2);
+  }
+  .lightbox-prev { left: 30px; }
+  .lightbox-next { right: 30px; }
+  .lightbox-caption {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-align: center;
+    background: rgba(0,0,0,0.4);
+    padding: 10px 24px;
+    border-radius: 4px;
+  }
+  .lightbox-counter {
+    position: absolute;
+    top: 36px;
+    left: 40px;
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+
+  /* ─── CTA BANNER ─── */
+  .gallery-cta {
+    background: var(--sand);
+    text-align: center;
+    padding: 60px;
+    border-top: 1px solid var(--border);
+  }
+  .gallery-cta h3 {
+    font-family: var(--heading);
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .gallery-cta p {
+    color: var(--text-light);
+    font-size: 15px;
+    font-weight: 300;
+    margin-bottom: 28px;
+  }
+  .gallery-cta a {
+    display: inline-block;
+    padding: 16px 44px;
+    background: var(--navy);
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: background 0.3s;
+  }
+  .gallery-cta a:hover { background: var(--slate); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #1a2332; color: rgba(255,255,255,0.6);
+    padding: 60px; display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+  }
+  .footer-brand .nav-logo { color: white; font-size: 22px; display: block; margin-bottom: 16px; }
+  .footer-brand p { font-size: 14px; line-height: 1.7; font-weight: 300; max-width: 280px; }
+  footer h4 {
+    color: white; font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 20px; font-weight: 500;
+  }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 10px; }
+  footer ul a {
+    color: rgba(255,255,255,0.6); text-decoration: none;
+    font-size: 14px; font-weight: 300; transition: color 0.3s;
+  }
+  footer ul a:hover { color: white; }
+  .footer-bottom {
+    grid-column: 1 / -1; padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex; justify-content: space-between;
+    font-size: 12px; font-weight: 300;
+  }
+  .footer-social { display: flex; gap: 20px; }
+  .footer-social a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s; }
+  .footer-social a:hover { color: white; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .photo-grid.layout-a,
+    .photo-grid.layout-b {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+    }
+    .photo-grid.layout-a .photo-item:nth-child(1),
+    .photo-grid.layout-a .photo-item:nth-child(4),
+    .photo-grid.layout-b .photo-item:nth-child(1),
+    .photo-grid.layout-b .photo-item:nth-child(4) {
+      grid-column: auto;
+      grid-row: auto;
+    }
+    .photo-item { min-height: 280px; }
+    footer { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .mobile-menu { display: block; }
+    .gallery-hero { padding: 50px 24px 40px; }
+    .gallery-hero h1 { font-size: 36px; }
+    .gallery-tabs { padding: 0 16px; }
+    .gallery-tab { padding: 16px 20px; font-size: 11px; letter-spacing: 1px; }
+    .property-gallery-section { padding: 40px 24px; }
+    .property-gallery-header h2 { font-size: 30px; }
+    .photo-grid.layout-a,
+    .photo-grid.layout-b {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+    .photo-item { min-height: 250px; }
+    .gallery-cta { padding: 40px 24px; }
+    .gallery-cta h3 { font-size: 26px; }
+    footer { grid-template-columns: 1fr; padding: 40px 24px; }
+    .lightbox { padding: 20px; }
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
+    .lightbox-close { top: 15px; right: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<div class="announcement-bar">
+  Book direct and save up to $1,000 off — no booking fees, no middleman
+  <a href="../#book-direct">Reserve Now</a>
+</div>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <a href="../" class="nav-logo"><span>Suite</span> Escape</a>
+  <ul class="nav-links">
+    <li><a href="../#properties">Properties</a></li>
+    <li><a href="../#experience">Experience</a></li>
+    <li><a href="./" class="active-link" style="color: var(--navy); font-weight: 500;">Gallery</a></li>
+    <li><a href="../#reviews">Reviews</a></li>
+    <li><a href="../#contact">Contact</a></li>
+    <li><a href="../#book-direct" class="nav-cta">Book Now</a></li>
+  </ul>
+  <button class="mobile-menu">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+  </button>
+</nav>
+
+<!-- Gallery Hero -->
+<div class="gallery-hero">
+  <div class="eyebrow">Photo Gallery</div>
+  <h1>See It for Yourself</h1>
+  <p>Every corner designed for relaxation, every view worth the trip. Browse our properties below.</p>
+</div>
+
+<!-- Property Filter Tabs -->
+<div class="gallery-tabs">
+  <button class="gallery-tab active" onclick="showGallery('oki')">The Sandy Paddle</button>
+  <button class="gallery-tab" onclick="showGallery('mi')">The Murrells Inlet Retreat</button>
+  <button class="gallery-tab" onclick="showGallery('all')">All Photos</button>
+</div>
+
+<!-- Sandy Paddle Gallery -->
+<section class="property-gallery-section active" id="gallery-oki">
+  <div class="property-gallery-header">
+    <div class="eyebrow">Oak Island, North Carolina</div>
+    <h2>The Sandy Paddle</h2>
+    <p>5 Bedrooms &bull; 4.5 Baths &bull; Sleeps 13 &bull; 5.0 Rating</p>
+    <div class="divider"></div>
+  </div>
+  <div class="photo-grid layout-a">
+    <div class="photo-item" onclick="openLightbox('oki', 0)">
+      <img src="../OKI%20Backyard%20Main.jpg" alt="The Sandy Paddle — Resort-style backyard with heated pool" loading="lazy">
+      <div class="photo-caption">Resort-style backyard with heated pool</div>
+    </div>
+    <div class="photo-item" onclick="openLightbox('oki', 1)">
+      <img src="../OKI%20Aerial.jpg" alt="The Sandy Paddle — Aerial view" loading="lazy">
+      <div class="photo-caption">Aerial view of the property</div>
+    </div>
+    <div class="photo-item" onclick="openLightbox('oki', 2)">
+      <img src="../OKI%20Pickleball.jpg" alt="The Sandy Paddle — Private pickleball court" loading="lazy">
+      <div class="photo-caption">Private pickleball court</div>
+    </div>
+    <div class="photo-item" onclick="openLightbox('oki', 3)">
+      <img src="../OKI%20Wall.jpg" alt="The Sandy Paddle — Interior details" loading="lazy">
+      <div class="photo-caption">Thoughtfully designed interior</div>
+    </div>
+    <div class="photo-item" onclick="openLightbox('oki', 4)">
+      <img src="../Aerial.jpg" alt="The Sandy Paddle — Coastal neighborhood aerial" loading="lazy">
+      <div class="photo-caption">Steps from the beach</div>
+    </div>
+  </div>
+</section>
+
+<!-- Murrells Inlet Gallery -->
+<section class="property-gallery-section" id="gallery-mi">
+  <div class="property-gallery-header">
+    <div class="eyebrow">Murrells Inlet, South Carolina</div>
+    <h2>The Murrells Inlet Retreat</h2>
+    <p>5 Bedrooms &bull; 5.5 Baths &bull; Sleeps 12 &bull; 4.96 Rating</p>
+    <div class="divider"></div>
+  </div>
+  <div class="photo-grid layout-b">
+    <div class="photo-item" onclick="openLightbox('mi', 0)">
+      <img src="../MI%20Backyard%20Main.jpg" alt="Murrells Inlet Retreat — Backyard with heated pool" loading="lazy">
+      <div class="photo-caption">Private heated pool and turfed yard</div>
+    </div>
+    <div class="photo-item" onclick="openLightbox('mi', 1)">
+      <img src="../MI%20Golf.jpg" alt="Murrells Inlet Retreat — Putting green" loading="lazy">
+      <div class="photo-caption">Putting green</div>
+    </div>
+    <div class="photo-item" onclick="openLightbox('mi', 2)">
+      <img src="../MI%20Kitchen.jpg" alt="Murrells Inlet Retreat — Gourmet kitchen" loading="lazy">
+      <div class="photo-caption">Gourmet kitchen with modern finishes</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<div class="gallery-cta">
+  <h3>Ready to Book Your Escape?</h3>
+  <p>Book direct and save up to $1,000 — no booking fees, no middleman.</p>
+  <a href="../#book-direct">Check Availability</a>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-brand">
+    <a href="../" class="nav-logo"><span>Suite</span> Escape</a>
+    <p>Luxury beachfront vacation rentals in North Carolina & South Carolina. Book direct for the best experience and rates.</p>
+  </div>
+  <div>
+    <h4>Properties</h4>
+    <ul>
+      <li><a href="../">The Sandy Paddle</a></li>
+      <li><a href="../">The Murrells Inlet Retreat</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Info</h4>
+    <ul>
+      <li><a href="../">About Us</a></li>
+      <li><a href="../">Local Guide</a></li>
+      <li><a href="../">FAQs</a></li>
+      <li><a href="../">House Rules</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Contact</h4>
+    <ul>
+      <li><a href="mailto:drew@heyfrankie.com">drew@heyfrankie.com</a></li>
+      <li><a href="https://www.instagram.com/suiteescaperentals/" target="_blank">@suiteescaperentals</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Suite Escape Rentals. All rights reserved.</span>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/suiteescaperentals/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</button>
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8250;</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+
+<script>
+  // Sticky nav shadow
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Gallery tab switching
+  function showGallery(view) {
+    const tabs = document.querySelectorAll('.gallery-tab');
+    const okiSection = document.getElementById('gallery-oki');
+    const miSection = document.getElementById('gallery-mi');
+
+    tabs.forEach(t => t.classList.remove('active'));
+
+    if (view === 'oki') {
+      tabs[0].classList.add('active');
+      okiSection.classList.add('active');
+      miSection.classList.remove('active');
+    } else if (view === 'mi') {
+      tabs[1].classList.add('active');
+      okiSection.classList.remove('active');
+      miSection.classList.add('active');
+    } else {
+      tabs[2].classList.add('active');
+      okiSection.classList.add('active');
+      miSection.classList.add('active');
+    }
+
+    // Scroll to first visible gallery
+    const firstVisible = document.querySelector('.property-gallery-section.active');
+    if (firstVisible) {
+      firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // Lightbox
+  const galleries = {
+    oki: [
+      { src: '../OKI%20Backyard%20Main.jpg', caption: 'Resort-style backyard with heated pool' },
+      { src: '../OKI%20Aerial.jpg', caption: 'Aerial view of the property' },
+      { src: '../OKI%20Pickleball.jpg', caption: 'Private pickleball court' },
+      { src: '../OKI%20Wall.jpg', caption: 'Thoughtfully designed interior' },
+      { src: '../Aerial.jpg', caption: 'Steps from the beach' }
+    ],
+    mi: [
+      { src: '../MI%20Backyard%20Main.jpg', caption: 'Private heated pool and turfed yard' },
+      { src: '../MI%20Golf.jpg', caption: 'Putting green' },
+      { src: '../MI%20Kitchen.jpg', caption: 'Gourmet kitchen with modern finishes' }
+    ]
+  };
+
+  let currentGallery = null;
+  let currentIndex = 0;
+
+  function openLightbox(gallery, index) {
+    currentGallery = gallery;
+    currentIndex = index;
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function navLightbox(direction) {
+    const photos = galleries[currentGallery];
+    currentIndex = (currentIndex + direction + photos.length) % photos.length;
+    updateLightbox();
+  }
+
+  function updateLightbox() {
+    const photos = galleries[currentGallery];
+    const photo = photos[currentIndex];
+    document.getElementById('lightbox-img').src = photo.src;
+    document.getElementById('lightbox-img').alt = photo.caption;
+    document.getElementById('lightbox-caption').textContent = photo.caption;
+    document.getElementById('lightbox-counter').textContent = (currentIndex + 1) + ' / ' + photos.length;
+  }
+
+  // Close lightbox with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('lightbox').classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navLightbox(-1);
+    if (e.key === 'ArrowRight') navLightbox(1);
+  });
+
+  // Close lightbox on background click
+  document.getElementById('lightbox').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+  });
+</script>
+
+</body>
+</html>
