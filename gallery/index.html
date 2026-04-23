@@ -31,45 +31,26 @@
 
   /* ─── ANNOUNCEMENT BAR ─── */
   .announcement-bar {
-    background: var(--navy);
-    color: white;
-    text-align: center;
-    padding: 10px 20px;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 400;
+    background: var(--navy); color: white; text-align: center;
+    padding: 10px 20px; font-size: 12px; letter-spacing: 2px;
+    text-transform: uppercase; font-weight: 400;
   }
   .announcement-bar a {
-    color: var(--soft-blue);
-    text-decoration: none;
-    border-bottom: 1px solid var(--soft-blue);
-    margin-left: 8px;
+    color: var(--soft-blue); text-decoration: none;
+    border-bottom: 1px solid var(--soft-blue); margin-left: 8px;
   }
 
   /* ─── NAVIGATION ─── */
   nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--cream);
-    border-bottom: 1px solid var(--border);
-    padding: 0 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 80px;
-    transition: box-shadow 0.3s;
+    position: sticky; top: 0; z-index: 100; background: var(--cream);
+    border-bottom: 1px solid var(--border); padding: 0 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 80px; transition: box-shadow 0.3s;
   }
   nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
   .nav-logo {
-    font-family: var(--heading);
-    font-size: 28px;
-    font-weight: 300;
-    letter-spacing: 3px;
-    color: var(--navy);
-    text-decoration: none;
-    text-transform: uppercase;
+    font-family: var(--heading); font-size: 28px; font-weight: 300;
+    letter-spacing: 3px; color: var(--navy); text-decoration: none; text-transform: uppercase;
   }
   .nav-logo span { font-weight: 600; }
   .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
@@ -97,295 +78,172 @@
 
   /* ─── GALLERY HERO ─── */
   .gallery-hero {
-    background: var(--navy);
-    padding: 70px 60px 60px;
-    text-align: center;
+    background: var(--navy); padding: 70px 60px 60px; text-align: center;
   }
   .gallery-hero .eyebrow {
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--soft-blue);
-    margin-bottom: 16px;
-    font-weight: 400;
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--soft-blue); margin-bottom: 16px; font-weight: 400;
   }
   .gallery-hero h1 {
-    font-family: var(--heading);
-    font-size: 52px;
-    font-weight: 300;
-    color: white;
-    margin-bottom: 12px;
+    font-family: var(--heading); font-size: 52px; font-weight: 300;
+    color: white; margin-bottom: 12px;
   }
   .gallery-hero p {
-    color: rgba(255,255,255,0.65);
-    font-size: 15px;
-    font-weight: 300;
-    max-width: 500px;
-    margin: 0 auto;
-    line-height: 1.7;
+    color: rgba(255,255,255,0.65); font-size: 15px; font-weight: 300;
+    max-width: 500px; margin: 0 auto; line-height: 1.7;
   }
 
   /* ─── PROPERTY FILTER TABS ─── */
   .gallery-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 0;
-    padding: 0 60px;
-    background: var(--cream);
-    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: center; gap: 0; padding: 0 60px;
+    background: var(--cream); border-bottom: 1px solid var(--border);
   }
   .gallery-tab {
-    padding: 20px 40px;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: none;
-    border: none;
-    color: var(--text-light);
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: 400;
-    position: relative;
+    padding: 20px 40px; font-family: 'Inter', sans-serif; font-size: 12px;
+    letter-spacing: 2px; text-transform: uppercase; background: none;
+    border: none; color: var(--text-light); cursor: pointer;
+    transition: all 0.3s; font-weight: 400; position: relative;
   }
-  .gallery-tab.active {
-    color: var(--navy);
-    font-weight: 500;
-  }
+  .gallery-tab.active { color: var(--navy); font-weight: 500; }
   .gallery-tab.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 20px;
-    right: 20px;
-    height: 2px;
-    background: var(--gold-accent);
+    content: ''; position: absolute; bottom: 0; left: 20px; right: 20px;
+    height: 2px; background: var(--gold-accent);
   }
-  .gallery-tab:hover:not(.active) {
-    color: var(--text-dark);
-  }
+  .gallery-tab:hover:not(.active) { color: var(--text-dark); }
 
   /* ─── PROPERTY GALLERY SECTION ─── */
-  .property-gallery-section {
-    padding: 60px;
-    display: none;
-  }
-  .property-gallery-section.active {
-    display: block;
-  }
+  .property-gallery-section { padding: 60px; display: none; }
+  .property-gallery-section.active { display: block; }
   .property-gallery-header {
-    text-align: center;
-    margin-bottom: 50px;
+    text-align: center; margin-bottom: 50px;
   }
   .property-gallery-header .eyebrow {
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--text-light);
-    margin-bottom: 12px;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--text-light); margin-bottom: 12px;
   }
   .property-gallery-header h2 {
-    font-family: var(--heading);
-    font-size: 38px;
-    font-weight: 300;
-    color: var(--navy);
-    margin-bottom: 8px;
+    font-family: var(--heading); font-size: 38px; font-weight: 300;
+    color: var(--navy); margin-bottom: 8px;
   }
   .property-gallery-header p {
-    color: var(--text-light);
-    font-size: 14px;
-    font-weight: 300;
+    color: var(--text-light); font-size: 14px; font-weight: 300;
   }
   .property-gallery-header .divider {
-    width: 60px;
+    width: 60px; height: 1px; background: var(--gold-accent); margin: 20px auto 0;
+  }
+
+  /* ─── ROOM CATEGORY ─── */
+  .room-category {
+    max-width: 1200px;
+    margin: 0 auto 60px;
+  }
+  .room-category-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .room-category-header h3 {
+    font-family: var(--heading);
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+  .room-category-header .line {
+    flex: 1;
     height: 1px;
-    background: var(--gold-accent);
-    margin: 20px auto 0;
+    background: var(--border);
   }
 
   /* ─── PHOTO GRID ─── */
   .photo-grid {
     display: grid;
-    gap: 16px;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
   }
-  /* Masonry-style layout */
-  .photo-grid.layout-a {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 320px 280px 320px;
+  .photo-grid .photo-item.featured {
+    grid-column: span 2;
+    grid-row: span 2;
   }
-  .photo-grid.layout-a .photo-item:nth-child(1) {
-    grid-column: 1 / 3;
-    grid-row: 1;
-  }
-  .photo-grid.layout-a .photo-item:nth-child(4) {
-    grid-column: 2 / 4;
-  }
-
-  .photo-grid.layout-b {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 320px 280px 320px;
-  }
-  .photo-grid.layout-b .photo-item:nth-child(1) {
-    grid-column: 1 / 3;
-    grid-row: 1;
-  }
-  .photo-grid.layout-b .photo-item:nth-child(4) {
-    grid-column: 2 / 4;
-  }
-
   .photo-item {
     position: relative;
     overflow: hidden;
     cursor: pointer;
     border-radius: 4px;
+    aspect-ratio: 4/3;
+  }
+  .photo-item.featured {
+    aspect-ratio: auto;
   }
   .photo-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease, filter 0.4s ease;
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s ease;
   }
-  .photo-item:hover img {
-    transform: scale(1.05);
-  }
+  .photo-item:hover img { transform: scale(1.05); }
   .photo-item .photo-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
+    position: absolute; bottom: 0; left: 0; right: 0; padding: 16px;
     background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
-    color: white;
-    font-size: 13px;
-    font-weight: 300;
-    letter-spacing: 0.5px;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
+    color: white; font-size: 12px; font-weight: 300; letter-spacing: 0.5px;
+    opacity: 0; transform: translateY(10px); transition: all 0.3s ease;
   }
-  .photo-item:hover .photo-caption {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .photo-item:hover .photo-caption { opacity: 1; transform: translateY(0); }
 
   /* ─── LIGHTBOX ─── */
   .lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    background: rgba(0,0,0,0.92);
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.92); align-items: center;
+    justify-content: center; padding: 40px;
   }
-  .lightbox.active {
-    display: flex;
-  }
+  .lightbox.active { display: flex; }
   .lightbox img {
-    max-width: 90vw;
-    max-height: 85vh;
-    object-fit: contain;
-    border-radius: 4px;
-    box-shadow: 0 8px 60px rgba(0,0,0,0.4);
+    max-width: 90vw; max-height: 85vh; object-fit: contain;
+    border-radius: 4px; box-shadow: 0 8px 60px rgba(0,0,0,0.4);
   }
   .lightbox-close {
-    position: absolute;
-    top: 30px;
-    right: 40px;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 32px;
-    cursor: pointer;
-    opacity: 0.7;
-    transition: opacity 0.3s;
-    font-weight: 300;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute; top: 30px; right: 40px; background: none;
+    border: none; color: white; font-size: 32px; cursor: pointer;
+    opacity: 0.7; transition: opacity 0.3s; font-weight: 300;
+    width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
   }
   .lightbox-close:hover { opacity: 1; }
   .lightbox-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: white;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 20px;
-    border-radius: 50%;
-    transition: all 0.3s;
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: white; width: 50px; height: 50px; display: flex;
+    align-items: center; justify-content: center; cursor: pointer;
+    font-size: 20px; border-radius: 50%; transition: all 0.3s;
   }
-  .lightbox-nav:hover {
-    background: rgba(255,255,255,0.2);
-  }
+  .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
   .lightbox-prev { left: 30px; }
   .lightbox-next { right: 30px; }
   .lightbox-caption {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: rgba(255,255,255,0.8);
-    font-size: 14px;
-    font-weight: 300;
-    letter-spacing: 0.5px;
-    text-align: center;
-    background: rgba(0,0,0,0.4);
-    padding: 10px 24px;
-    border-radius: 4px;
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 300;
+    letter-spacing: 0.5px; text-align: center; background: rgba(0,0,0,0.4);
+    padding: 10px 24px; border-radius: 4px; white-space: nowrap;
   }
   .lightbox-counter {
-    position: absolute;
-    top: 36px;
-    left: 40px;
-    color: rgba(255,255,255,0.5);
-    font-size: 13px;
-    font-weight: 300;
-    letter-spacing: 1px;
+    position: absolute; top: 36px; left: 40px; color: rgba(255,255,255,0.5);
+    font-size: 13px; font-weight: 300; letter-spacing: 1px;
   }
 
   /* ─── CTA BANNER ─── */
   .gallery-cta {
-    background: var(--sand);
-    text-align: center;
-    padding: 60px;
+    background: var(--sand); text-align: center; padding: 60px;
     border-top: 1px solid var(--border);
   }
   .gallery-cta h3 {
-    font-family: var(--heading);
-    font-size: 32px;
-    font-weight: 300;
-    color: var(--navy);
-    margin-bottom: 12px;
+    font-family: var(--heading); font-size: 32px; font-weight: 300;
+    color: var(--navy); margin-bottom: 12px;
   }
   .gallery-cta p {
-    color: var(--text-light);
-    font-size: 15px;
-    font-weight: 300;
-    margin-bottom: 28px;
+    color: var(--text-light); font-size: 15px; font-weight: 300; margin-bottom: 28px;
   }
   .gallery-cta a {
-    display: inline-block;
-    padding: 16px 44px;
-    background: var(--navy);
-    color: white;
-    text-decoration: none;
-    font-size: 12px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    font-weight: 500;
+    display: inline-block; padding: 16px 44px; background: var(--navy);
+    color: white; text-decoration: none; font-size: 12px;
+    letter-spacing: 2.5px; text-transform: uppercase; font-weight: 500;
     transition: background 0.3s;
   }
   .gallery-cta a:hover { background: var(--slate); }
@@ -412,8 +270,7 @@
   .footer-bottom {
     grid-column: 1 / -1; padding-top: 30px;
     border-top: 1px solid rgba(255,255,255,0.1);
-    display: flex; justify-content: space-between;
-    font-size: 12px; font-weight: 300;
+    display: flex; justify-content: space-between; font-size: 12px; font-weight: 300;
   }
   .footer-social { display: flex; gap: 20px; }
   .footer-social a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s; }
@@ -421,19 +278,7 @@
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 1024px) {
-    .photo-grid.layout-a,
-    .photo-grid.layout-b {
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: auto;
-    }
-    .photo-grid.layout-a .photo-item:nth-child(1),
-    .photo-grid.layout-a .photo-item:nth-child(4),
-    .photo-grid.layout-b .photo-item:nth-child(1),
-    .photo-grid.layout-b .photo-item:nth-child(4) {
-      grid-column: auto;
-      grid-row: auto;
-    }
-    .photo-item { min-height: 280px; }
+    .photo-grid { grid-template-columns: repeat(3, 1fr); }
     footer { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 768px) {
@@ -442,16 +287,12 @@
     .mobile-menu { display: block; }
     .gallery-hero { padding: 50px 24px 40px; }
     .gallery-hero h1 { font-size: 36px; }
-    .gallery-tabs { padding: 0 16px; }
+    .gallery-tabs { padding: 0 16px; flex-wrap: wrap; }
     .gallery-tab { padding: 16px 20px; font-size: 11px; letter-spacing: 1px; }
     .property-gallery-section { padding: 40px 24px; }
     .property-gallery-header h2 { font-size: 30px; }
-    .photo-grid.layout-a,
-    .photo-grid.layout-b {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto;
-    }
-    .photo-item { min-height: 250px; }
+    .photo-grid { grid-template-columns: repeat(2, 1fr); }
+    .photo-grid .photo-item.featured { grid-column: span 2; grid-row: span 1; }
     .gallery-cta { padding: 40px 24px; }
     .gallery-cta h3 { font-size: 26px; }
     footer { grid-template-columns: 1fr; padding: 40px 24px; }
@@ -459,6 +300,10 @@
     .lightbox-prev { left: 10px; }
     .lightbox-next { right: 10px; }
     .lightbox-close { top: 15px; right: 15px; }
+  }
+  @media (max-width: 480px) {
+    .photo-grid { grid-template-columns: 1fr; }
+    .photo-grid .photo-item.featured { grid-column: span 1; }
   }
 </style>
 </head>
@@ -476,7 +321,7 @@
   <ul class="nav-links">
     <li><a href="../#properties">Properties</a></li>
     <li><a href="../#experience">Experience</a></li>
-    <li><a href="./" class="active-link" style="color: var(--navy); font-weight: 500;">Gallery</a></li>
+    <li><a href="./" style="color: var(--navy); font-weight: 500;">Gallery</a></li>
     <li><a href="../#reviews">Reviews</a></li>
     <li><a href="../#contact">Contact</a></li>
     <li><a href="../#book-direct" class="nav-cta">Book Now</a></li>
@@ -502,7 +347,9 @@
   <button class="gallery-tab" onclick="showGallery('all')">All Photos</button>
 </div>
 
-<!-- Sandy Paddle Gallery -->
+<!-- ═══════════════════════════════════════════ -->
+<!-- SANDY PADDLE — OAK ISLAND                  -->
+<!-- ═══════════════════════════════════════════ -->
 <section class="property-gallery-section active" id="gallery-oki">
   <div class="property-gallery-header">
     <div class="eyebrow">Oak Island, North Carolina</div>
@@ -510,31 +357,368 @@
     <p>5 Bedrooms &bull; 4.5 Baths &bull; Sleeps 13 &bull; 5.0 Rating</p>
     <div class="divider"></div>
   </div>
-  <div class="photo-grid layout-a">
-    <div class="photo-item" onclick="openLightbox('oki', 0)">
-      <img src="../OKI%20Backyard%20Main.jpg" alt="The Sandy Paddle — Resort-style backyard with heated pool" loading="lazy">
-      <div class="photo-caption">Resort-style backyard with heated pool</div>
+
+  <!-- Backyard & Pool -->
+  <div class="room-category">
+    <div class="room-category-header">
+      <h3>Backyard & Pool</h3>
+      <div class="line"></div>
     </div>
-    <div class="photo-item" onclick="openLightbox('oki', 1)">
-      <img src="../OKI%20Aerial.jpg" alt="The Sandy Paddle — Aerial view" loading="lazy">
-      <div class="photo-caption">Aerial view of the property</div>
-    </div>
-    <div class="photo-item" onclick="openLightbox('oki', 2)">
-      <img src="../OKI%20Pickleball.jpg" alt="The Sandy Paddle — Private pickleball court" loading="lazy">
-      <div class="photo-caption">Private pickleball court</div>
-    </div>
-    <div class="photo-item" onclick="openLightbox('oki', 3)">
-      <img src="../OKI%20Wall.jpg" alt="The Sandy Paddle — Interior details" loading="lazy">
-      <div class="photo-caption">Thoughtfully designed interior</div>
-    </div>
-    <div class="photo-item" onclick="openLightbox('oki', 4)">
-      <img src="../Aerial.jpg" alt="The Sandy Paddle — Coastal neighborhood aerial" loading="lazy">
-      <div class="photo-caption">Steps from the beach</div>
+    <div class="photo-grid" id="grid-oki-backyard">
+      <div class="photo-item featured" onclick="openLightbox(0)">
+        <img src="../OKI%20Backyard%20Main.jpg" alt="Resort-style backyard with heated pool" loading="lazy">
+        <div class="photo-caption">Resort-style backyard with heated pool</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(1)">
+        <img src="../109.jpg" alt="Backyard" loading="lazy">
+        <div class="photo-caption">Backyard oasis</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(2)">
+        <img src="../110%20(2).jpg" alt="Backyard" loading="lazy">
+        <div class="photo-caption">Pool & entertaining area</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(3)">
+        <img src="../112.jpg" alt="Backyard" loading="lazy">
+        <div class="photo-caption">Poolside relaxation</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(4)">
+        <img src="../114%20(1).jpg" alt="Backyard" loading="lazy">
+        <div class="photo-caption">Evening ambiance</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(5)">
+        <img src="../118%20(1).jpg" alt="Backyard" loading="lazy">
+        <div class="photo-caption">Backyard entertainment</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(6)">
+        <img src="../119%20(1).jpg" alt="Backyard" loading="lazy">
+        <div class="photo-caption">Outdoor living</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(7)">
+        <img src="../OKI%20Pickleball.jpg" alt="Private pickleball court" loading="lazy">
+        <div class="photo-caption">Private pickleball court</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(8)">
+        <img src="../124%20(1).jpg" alt="Backyard" loading="lazy">
+        <div class="photo-caption">Outdoor amenities</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(9)">
+        <img src="../126%20(1).jpg" alt="Backyard" loading="lazy">
+        <div class="photo-caption">Resort-style grounds</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(10)">
+        <img src="../130.jpg" alt="Backyard" loading="lazy">
+        <div class="photo-caption">Backyard views</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(11)">
+        <img src="../131.jpg" alt="Backyard" loading="lazy">
+        <div class="photo-caption">Outdoor space</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(12)">
+        <img src="../134.jpg" alt="Backyard" loading="lazy">
+        <div class="photo-caption">Yard & amenities</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(13)">
+        <img src="../138.jpg" alt="Backyard" loading="lazy">
+        <div class="photo-caption">Outdoor entertainment</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(14)">
+        <img src="../157%20(1).jpg" alt="Backyard" loading="lazy">
+        <div class="photo-caption">Full backyard view</div>
+      </div>
     </div>
   </div>
+
+  <!-- Aerial & Exterior -->
+  <div class="room-category">
+    <div class="room-category-header">
+      <h3>Aerial & Exterior</h3>
+      <div class="line"></div>
+    </div>
+    <div class="photo-grid" id="grid-oki-exterior">
+      <div class="photo-item featured" onclick="openLightbox(15)">
+        <img src="../OKI%20Aerial.jpg" alt="Aerial view of The Sandy Paddle" loading="lazy">
+        <div class="photo-caption">Aerial view of the property</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(16)">
+        <img src="../Aerial.jpg" alt="Coastal neighborhood aerial" loading="lazy">
+        <div class="photo-caption">Steps from the beach</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(17)">
+        <img src="../81%20(1).jpg" alt="Front porch" loading="lazy">
+        <div class="photo-caption">Front porch</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(18)">
+        <img src="../82.jpg" alt="Front porch" loading="lazy">
+        <div class="photo-caption">Covered front porch</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(19)">
+        <img src="../99%20(2).jpg" alt="Front exterior" loading="lazy">
+        <div class="photo-caption">Front of property</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kitchen & Living Room -->
+  <div class="room-category">
+    <div class="room-category-header">
+      <h3>Kitchen & Living Room</h3>
+      <div class="line"></div>
+    </div>
+    <div class="photo-grid" id="grid-oki-kitchen">
+      <div class="photo-item featured" onclick="openLightbox(20)">
+        <img src="../49%20(1).jpg" alt="Kitchen" loading="lazy">
+        <div class="photo-caption">Open-concept kitchen</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(21)">
+        <img src="../50%20(2).jpg" alt="Kitchen" loading="lazy">
+        <div class="photo-caption">Kitchen island & seating</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(22)">
+        <img src="../51.jpg" alt="Kitchen" loading="lazy">
+        <div class="photo-caption">Modern appliances</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(23)">
+        <img src="../53.jpg" alt="Kitchen" loading="lazy">
+        <div class="photo-caption">Kitchen details</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(24)">
+        <img src="../56%20(1).jpg" alt="Living area" loading="lazy">
+        <div class="photo-caption">Living room</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(25)">
+        <img src="../58%20(1).jpg" alt="Living area" loading="lazy">
+        <div class="photo-caption">Open living space</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(26)">
+        <img src="../61.jpg" alt="Living area" loading="lazy">
+        <div class="photo-caption">Comfortable seating</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(27)">
+        <img src="../62%20(1).jpg" alt="Living area" loading="lazy">
+        <div class="photo-caption">Entertainment area</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(28)">
+        <img src="../64%20(2).jpg" alt="Living area" loading="lazy">
+        <div class="photo-caption">Living room views</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(29)">
+        <img src="../65%20(2).jpg" alt="Dining area" loading="lazy">
+        <div class="photo-caption">Dining area</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back Porches -->
+  <div class="room-category">
+    <div class="room-category-header">
+      <h3>Back Porches</h3>
+      <div class="line"></div>
+    </div>
+    <div class="photo-grid" id="grid-oki-porches">
+      <div class="photo-item featured" onclick="openLightbox(30)">
+        <img src="../85%20(1).jpg" alt="Back porch" loading="lazy">
+        <div class="photo-caption">Covered back porch</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(31)">
+        <img src="../87.jpg" alt="Back porch" loading="lazy">
+        <div class="photo-caption">Porch seating</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(32)">
+        <img src="../89.jpg" alt="Back porch" loading="lazy">
+        <div class="photo-caption">Outdoor dining on the porch</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(33)">
+        <img src="../97.jpg" alt="Back porch" loading="lazy">
+        <div class="photo-caption">Porch views</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(34)">
+        <img src="../96.jpg" alt="Back porch" loading="lazy">
+        <div class="photo-caption">Relax on the porch</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Primary Bedroom -->
+  <div class="room-category">
+    <div class="room-category-header">
+      <h3>Primary Bedroom</h3>
+      <div class="line"></div>
+    </div>
+    <div class="photo-grid" id="grid-oki-primary">
+      <div class="photo-item featured" onclick="openLightbox(35)">
+        <img src="../70.jpg" alt="Primary bedroom" loading="lazy">
+        <div class="photo-caption">Spacious primary suite</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(36)">
+        <img src="../71%20(1).jpg" alt="Primary bedroom" loading="lazy">
+        <div class="photo-caption">Primary bedroom details</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(37)">
+        <img src="../71%20(2).jpg" alt="Primary bedroom" loading="lazy">
+        <div class="photo-caption">Primary bedroom view</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(38)">
+        <img src="../75%20(1).jpg" alt="Primary bathroom" loading="lazy">
+        <div class="photo-caption">Primary en-suite bathroom</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(39)">
+        <img src="../79%20(1).jpg" alt="Primary bedroom" loading="lazy">
+        <div class="photo-caption">Primary bedroom retreat</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bedroom 2 -->
+  <div class="room-category">
+    <div class="room-category-header">
+      <h3>Bedroom 2</h3>
+      <div class="line"></div>
+    </div>
+    <div class="photo-grid" id="grid-oki-bed2">
+      <div class="photo-item featured" onclick="openLightbox(40)">
+        <img src="../5%20(1).jpg" alt="Bedroom 2" loading="lazy">
+        <div class="photo-caption">Bedroom 2</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(41)">
+        <img src="../6.jpg" alt="Bedroom 2" loading="lazy">
+        <div class="photo-caption">Bedroom 2 details</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(42)">
+        <img src="../9%20(2).jpg" alt="Bedroom 2" loading="lazy">
+        <div class="photo-caption">Bedroom 2 seating area</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bedroom 3 -->
+  <div class="room-category">
+    <div class="room-category-header">
+      <h3>Bedroom 3</h3>
+      <div class="line"></div>
+    </div>
+    <div class="photo-grid" id="grid-oki-bed3">
+      <div class="photo-item featured" onclick="openLightbox(43)">
+        <img src="../35.jpg" alt="Bedroom 3" loading="lazy">
+        <div class="photo-caption">Bedroom 3</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(44)">
+        <img src="../37.jpg" alt="Bedroom 3" loading="lazy">
+        <div class="photo-caption">Bedroom 3 details</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(45)">
+        <img src="../38.jpg" alt="Bedroom 3" loading="lazy">
+        <div class="photo-caption">Bedroom 3 bathroom</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(46)">
+        <img src="../39%20(2).jpg" alt="Bedroom 3" loading="lazy">
+        <div class="photo-caption">Bedroom 3 view</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bedroom 4 -->
+  <div class="room-category">
+    <div class="room-category-header">
+      <h3>Bedroom 4</h3>
+      <div class="line"></div>
+    </div>
+    <div class="photo-grid" id="grid-oki-bed4">
+      <div class="photo-item featured" onclick="openLightbox(47)">
+        <img src="../22%20(1).jpg" alt="Bedroom 4" loading="lazy">
+        <div class="photo-caption">Bedroom 4</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(48)">
+        <img src="../24%20(1).jpg" alt="Bedroom 4" loading="lazy">
+        <div class="photo-caption">Bedroom 4 details</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(49)">
+        <img src="../26.jpg" alt="Bedroom 4" loading="lazy">
+        <div class="photo-caption">Bedroom 4 bathroom</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(50)">
+        <img src="../29.jpg" alt="Bedroom 4" loading="lazy">
+        <div class="photo-caption">Bedroom 4 view</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bedroom 5 -->
+  <div class="room-category">
+    <div class="room-category-header">
+      <h3>Bedroom 5</h3>
+      <div class="line"></div>
+    </div>
+    <div class="photo-grid" id="grid-oki-bed5">
+      <div class="photo-item featured" onclick="openLightbox(51)">
+        <img src="../11%20(2).jpg" alt="Bedroom 5" loading="lazy">
+        <div class="photo-caption">Bedroom 5</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(52)">
+        <img src="../13.jpg" alt="Bedroom 5" loading="lazy">
+        <div class="photo-caption">Bedroom 5 details</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(53)">
+        <img src="../14%20(1).jpg" alt="Bedroom 5" loading="lazy">
+        <div class="photo-caption">Bedroom 5 bathroom</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(54)">
+        <img src="../16.jpg" alt="Bedroom 5" loading="lazy">
+        <div class="photo-caption">Bedroom 5 view</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(55)">
+        <img src="../19.jpg" alt="Bedroom 5" loading="lazy">
+        <div class="photo-caption">Bedroom 5 closet</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Extras & Amenities -->
+  <div class="room-category">
+    <div class="room-category-header">
+      <h3>Extras & Amenities</h3>
+      <div class="line"></div>
+    </div>
+    <div class="photo-grid" id="grid-oki-extras">
+      <div class="photo-item" onclick="openLightbox(56)">
+        <img src="../OKI%20Wall.jpg" alt="Interior details" loading="lazy">
+        <div class="photo-caption">Thoughtfully designed interior</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(57)">
+        <img src="../42.jpg" alt="Common area" loading="lazy">
+        <div class="photo-caption">Common area</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(58)">
+        <img src="../44.jpg" alt="Common area" loading="lazy">
+        <div class="photo-caption">Hallway & details</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(59)">
+        <img src="../30%20(1).jpg" alt="Elevator" loading="lazy">
+        <div class="photo-caption">Private elevator</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(60)">
+        <img src="../32%20(1).jpg" alt="Laundry" loading="lazy">
+        <div class="photo-caption">Washer & dryer</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(61)">
+        <img src="../101%20(1).jpg" alt="Storage closet" loading="lazy">
+        <div class="photo-caption">Beach gear storage closet</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(62)">
+        <img src="../103.jpg" alt="Outdoor shower" loading="lazy">
+        <div class="photo-caption">Outdoor shower</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(63)">
+        <img src="../105.jpg" alt="Grill area" loading="lazy">
+        <div class="photo-caption">Outdoor grill</div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
-<!-- Murrells Inlet Gallery -->
+<!-- ═══════════════════════════════════════════ -->
+<!-- MURRELLS INLET RETREAT                     -->
+<!-- ═══════════════════════════════════════════ -->
 <section class="property-gallery-section" id="gallery-mi">
   <div class="property-gallery-header">
     <div class="eyebrow">Murrells Inlet, South Carolina</div>
@@ -542,19 +726,30 @@
     <p>5 Bedrooms &bull; 5.5 Baths &bull; Sleeps 12 &bull; 4.96 Rating</p>
     <div class="divider"></div>
   </div>
-  <div class="photo-grid layout-b">
-    <div class="photo-item" onclick="openLightbox('mi', 0)">
-      <img src="../MI%20Backyard%20Main.jpg" alt="Murrells Inlet Retreat — Backyard with heated pool" loading="lazy">
-      <div class="photo-caption">Private heated pool and turfed yard</div>
+
+  <div class="room-category">
+    <div class="room-category-header">
+      <h3>Property Photos</h3>
+      <div class="line"></div>
     </div>
-    <div class="photo-item" onclick="openLightbox('mi', 1)">
-      <img src="../MI%20Golf.jpg" alt="Murrells Inlet Retreat — Putting green" loading="lazy">
-      <div class="photo-caption">Putting green</div>
+    <div class="photo-grid" id="grid-mi-all">
+      <div class="photo-item featured" onclick="openLightbox(64)">
+        <img src="../MI%20Backyard%20Main.jpg" alt="Murrells Inlet backyard with heated pool" loading="lazy">
+        <div class="photo-caption">Private heated pool and turfed yard</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(65)">
+        <img src="../MI%20Golf.jpg" alt="Putting green" loading="lazy">
+        <div class="photo-caption">Putting green</div>
+      </div>
+      <div class="photo-item" onclick="openLightbox(66)">
+        <img src="../MI%20Kitchen.jpg" alt="Gourmet kitchen" loading="lazy">
+        <div class="photo-caption">Gourmet kitchen with modern finishes</div>
+      </div>
     </div>
-    <div class="photo-item" onclick="openLightbox('mi', 2)">
-      <img src="../MI%20Kitchen.jpg" alt="Murrells Inlet Retreat — Gourmet kitchen" loading="lazy">
-      <div class="photo-caption">Gourmet kitchen with modern finishes</div>
-    </div>
+  </div>
+
+  <div style="text-align: center; padding: 20px 0 40px; color: var(--text-light); font-size: 14px; font-weight: 300; font-style: italic;">
+    More photos coming soon
   </div>
 </section>
 
@@ -640,34 +835,97 @@
       miSection.classList.add('active');
     }
 
-    // Scroll to first visible gallery
     const firstVisible = document.querySelector('.property-gallery-section.active');
     if (firstVisible) {
       firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
-  // Lightbox
-  const galleries = {
-    oki: [
-      { src: '../OKI%20Backyard%20Main.jpg', caption: 'Resort-style backyard with heated pool' },
-      { src: '../OKI%20Aerial.jpg', caption: 'Aerial view of the property' },
-      { src: '../OKI%20Pickleball.jpg', caption: 'Private pickleball court' },
-      { src: '../OKI%20Wall.jpg', caption: 'Thoughtfully designed interior' },
-      { src: '../Aerial.jpg', caption: 'Steps from the beach' }
-    ],
-    mi: [
-      { src: '../MI%20Backyard%20Main.jpg', caption: 'Private heated pool and turfed yard' },
-      { src: '../MI%20Golf.jpg', caption: 'Putting green' },
-      { src: '../MI%20Kitchen.jpg', caption: 'Gourmet kitchen with modern finishes' }
-    ]
-  };
+  // All photos in order for lightbox navigation
+  const allPhotos = [
+    // Backyard & Pool (0-14)
+    { src: '../OKI%20Backyard%20Main.jpg', caption: 'Resort-style backyard with heated pool' },
+    { src: '../109.jpg', caption: 'Backyard oasis' },
+    { src: '../110%20(2).jpg', caption: 'Pool & entertaining area' },
+    { src: '../112.jpg', caption: 'Poolside relaxation' },
+    { src: '../114%20(1).jpg', caption: 'Evening ambiance' },
+    { src: '../118%20(1).jpg', caption: 'Backyard entertainment' },
+    { src: '../119%20(1).jpg', caption: 'Outdoor living' },
+    { src: '../OKI%20Pickleball.jpg', caption: 'Private pickleball court' },
+    { src: '../124%20(1).jpg', caption: 'Outdoor amenities' },
+    { src: '../126%20(1).jpg', caption: 'Resort-style grounds' },
+    { src: '../130.jpg', caption: 'Backyard views' },
+    { src: '../131.jpg', caption: 'Outdoor space' },
+    { src: '../134.jpg', caption: 'Yard & amenities' },
+    { src: '../138.jpg', caption: 'Outdoor entertainment' },
+    { src: '../157%20(1).jpg', caption: 'Full backyard view' },
+    // Aerial & Exterior (15-19)
+    { src: '../OKI%20Aerial.jpg', caption: 'Aerial view of the property' },
+    { src: '../Aerial.jpg', caption: 'Steps from the beach' },
+    { src: '../81%20(1).jpg', caption: 'Front porch' },
+    { src: '../82.jpg', caption: 'Covered front porch' },
+    { src: '../99%20(2).jpg', caption: 'Front of property' },
+    // Kitchen & Living Room (20-29)
+    { src: '../49%20(1).jpg', caption: 'Open-concept kitchen' },
+    { src: '../50%20(2).jpg', caption: 'Kitchen island & seating' },
+    { src: '../51.jpg', caption: 'Modern appliances' },
+    { src: '../53.jpg', caption: 'Kitchen details' },
+    { src: '../56%20(1).jpg', caption: 'Living room' },
+    { src: '../58%20(1).jpg', caption: 'Open living space' },
+    { src: '../61.jpg', caption: 'Comfortable seating' },
+    { src: '../62%20(1).jpg', caption: 'Entertainment area' },
+    { src: '../64%20(2).jpg', caption: 'Living room views' },
+    { src: '../65%20(2).jpg', caption: 'Dining area' },
+    // Back Porches (30-34)
+    { src: '../85%20(1).jpg', caption: 'Covered back porch' },
+    { src: '../87.jpg', caption: 'Porch seating' },
+    { src: '../89.jpg', caption: 'Outdoor dining on the porch' },
+    { src: '../97.jpg', caption: 'Porch views' },
+    { src: '../96.jpg', caption: 'Relax on the porch' },
+    // Primary Bedroom (35-39)
+    { src: '../70.jpg', caption: 'Spacious primary suite' },
+    { src: '../71%20(1).jpg', caption: 'Primary bedroom details' },
+    { src: '../71%20(2).jpg', caption: 'Primary bedroom view' },
+    { src: '../75%20(1).jpg', caption: 'Primary en-suite bathroom' },
+    { src: '../79%20(1).jpg', caption: 'Primary bedroom retreat' },
+    // Bedroom 2 (40-42)
+    { src: '../5%20(1).jpg', caption: 'Bedroom 2' },
+    { src: '../6.jpg', caption: 'Bedroom 2 details' },
+    { src: '../9%20(2).jpg', caption: 'Bedroom 2 seating area' },
+    // Bedroom 3 (43-46)
+    { src: '../35.jpg', caption: 'Bedroom 3' },
+    { src: '../37.jpg', caption: 'Bedroom 3 details' },
+    { src: '../38.jpg', caption: 'Bedroom 3 bathroom' },
+    { src: '../39%20(2).jpg', caption: 'Bedroom 3 view' },
+    // Bedroom 4 (47-50)
+    { src: '../22%20(1).jpg', caption: 'Bedroom 4' },
+    { src: '../24%20(1).jpg', caption: 'Bedroom 4 details' },
+    { src: '../26.jpg', caption: 'Bedroom 4 bathroom' },
+    { src: '../29.jpg', caption: 'Bedroom 4 view' },
+    // Bedroom 5 (51-55)
+    { src: '../11%20(2).jpg', caption: 'Bedroom 5' },
+    { src: '../13.jpg', caption: 'Bedroom 5 details' },
+    { src: '../14%20(1).jpg', caption: 'Bedroom 5 bathroom' },
+    { src: '../16.jpg', caption: 'Bedroom 5 view' },
+    { src: '../19.jpg', caption: 'Bedroom 5 closet' },
+    // Extras (56-63)
+    { src: '../OKI%20Wall.jpg', caption: 'Thoughtfully designed interior' },
+    { src: '../42.jpg', caption: 'Common area' },
+    { src: '../44.jpg', caption: 'Hallway & details' },
+    { src: '../30%20(1).jpg', caption: 'Private elevator' },
+    { src: '../32%20(1).jpg', caption: 'Washer & dryer' },
+    { src: '../101%20(1).jpg', caption: 'Beach gear storage closet' },
+    { src: '../103.jpg', caption: 'Outdoor shower' },
+    { src: '../105.jpg', caption: 'Outdoor grill' },
+    // Murrells Inlet (64-66)
+    { src: '../MI%20Backyard%20Main.jpg', caption: 'Private heated pool and turfed yard' },
+    { src: '../MI%20Golf.jpg', caption: 'Putting green' },
+    { src: '../MI%20Kitchen.jpg', caption: 'Gourmet kitchen with modern finishes' }
+  ];
 
-  let currentGallery = null;
   let currentIndex = 0;
 
-  function openLightbox(gallery, index) {
-    currentGallery = gallery;
+  function openLightbox(index) {
     currentIndex = index;
     updateLightbox();
     document.getElementById('lightbox').classList.add('active');
@@ -680,21 +938,19 @@
   }
 
   function navLightbox(direction) {
-    const photos = galleries[currentGallery];
-    currentIndex = (currentIndex + direction + photos.length) % photos.length;
+    currentIndex = (currentIndex + direction + allPhotos.length) % allPhotos.length;
     updateLightbox();
   }
 
   function updateLightbox() {
-    const photos = galleries[currentGallery];
-    const photo = photos[currentIndex];
+    const photo = allPhotos[currentIndex];
     document.getElementById('lightbox-img').src = photo.src;
     document.getElementById('lightbox-img').alt = photo.caption;
     document.getElementById('lightbox-caption').textContent = photo.caption;
-    document.getElementById('lightbox-counter').textContent = (currentIndex + 1) + ' / ' + photos.length;
+    document.getElementById('lightbox-counter').textContent = (currentIndex + 1) + ' / ' + allPhotos.length;
   }
 
-  // Close lightbox with Escape key
+  // Keyboard navigation
   document.addEventListener('keydown', (e) => {
     if (!document.getElementById('lightbox').classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
@@ -702,7 +958,7 @@
     if (e.key === 'ArrowRight') navLightbox(1);
   });
 
-  // Close lightbox on background click
+  // Close on background click
   document.getElementById('lightbox').addEventListener('click', (e) => {
     if (e.target === document.getElementById('lightbox')) closeLightbox();
   });
