@@ -483,6 +483,43 @@
     font-size: 15px; color: var(--text-light);
     margin-bottom: 50px; font-weight: 300;
   }
+  .booking-notice {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    background: var(--sand);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold-accent);
+    padding: 18px 24px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-dark);
+    font-weight: 300;
+  }
+  .booking-notice strong {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+  .widget-tab-label {
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+  .widget-tab-label svg {
+    width: 14px;
+    height: 14px;
+    vertical-align: -2px;
+    margin-right: 4px;
+    stroke: var(--gold-accent);
+  }
   .widget-tabs {
     display: flex;
     justify-content: center;
@@ -491,20 +528,24 @@
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
   }
   .widget-tab {
     flex: 1;
-    padding: 16px 24px;
+    padding: 18px 24px;
     font-family: 'Inter', sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    border: 1px solid var(--border);
+    border: 2px solid var(--border);
     background: var(--warm-white);
     color: var(--text-light);
     cursor: pointer;
     transition: all 0.3s;
     font-weight: 400;
+    position: relative;
   }
   .widget-tab:first-child { border-right: none; }
   .widget-tab.active {
@@ -513,9 +554,22 @@
     border-color: var(--navy);
     font-weight: 500;
   }
+  .widget-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid var(--navy);
+  }
   .widget-tab:hover:not(.active) {
     background: var(--sand);
     color: var(--text-dark);
+    border-color: var(--gold-accent);
   }
   .widget-container {
     max-width: 900px;
@@ -633,7 +687,7 @@
   <ul class="nav-links">
     <li><a href="#properties">Properties</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="./gallery/">Gallery</a></li>
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#booking" class="nav-cta">Book Now</a></li>
@@ -813,8 +867,16 @@
 <!-- Booking Section -->
 <section class="widget-section" id="book-direct">
   <h2>Check Availability & Book</h2>
-  <p>Select your dates below to book instantly — direct means better rates.</p>
 
+  <div class="booking-notice">
+    <strong>Booking Info</strong>
+    Most dates are booked up to 6 months in advance. High season runs Memorial Day to Labor Day — Saturday to Saturday bookings only during peak season.
+  </div>
+
+  <div class="widget-tab-label">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+    Select a property to view calendar
+  </div>
   <div class="widget-tabs">
     <button class="widget-tab active" onclick="switchProperty(0)">The Sandy Paddle — Oak Island</button>
     <button class="widget-tab" onclick="switchProperty(1)">The Murrells Inlet Retreat</button>
